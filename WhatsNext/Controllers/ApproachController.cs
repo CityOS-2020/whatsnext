@@ -4,15 +4,21 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WhatsNext.
+using WhatsNext.Entities;
+using WhatsNext.Repository;
 
 namespace WhatsNext.Controllers
 {
     public class ApproachController : ApiController
     {
         // GET: api/Approach
-        public IEnumerable<string> Get()
+        public IEnumerable<User> Get()
         {
-            return new string[] { "value1", "value2" };
+            using (var unitOfWork = new UnitOfWork(new WhatsNextEntities()))
+            {
+                return unitOfWork.Users.GetAll();
+            }
         }
 
         // GET: api/Approach/5
@@ -22,7 +28,7 @@ namespace WhatsNext.Controllers
         }
 
         // POST: api/Approach
-        public void Post([FromBody]string value)
+        public void Post([FromBody]User value)
         {
         }
 
