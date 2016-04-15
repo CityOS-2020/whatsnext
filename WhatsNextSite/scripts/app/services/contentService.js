@@ -13,11 +13,47 @@
             var genericContent = [
                 {
                     "id": 0,
-                    "imgUrl": "url1"
+                    "imgUrl": "img/unsplash1.jpg",
+                    "title": {
+                        "left": "what's",
+                        "right": "next"
+                    },
+                    "message1" : {
+                        "left": "Welcome to the next generation of",
+                        "right": "smart content serving"
+                    },
+                    "message2": {
+                        "left": "Something",
+                        "right": "cool"
+                    },
+                    "message3": {
+                        "left": "Something",
+                        "right": "cool"
+                    },
+                    "message4": {
+                        "left": "Welcome to the next generation of",
+                        "right": "smart content serving"
+                    }
                 },
                 {
-                    "id": 2,
-                    "imgUrl": "url2"
+                    "id": 1,
+                    "imgUrl": "img/unsplash2.jpg",
+                    "message1": {
+                        "left": "Welcome to the next generation of",
+                        "right": "smart content serving"
+                    },
+                    "message2": {
+                        "left": "Something",
+                        "right": "cool"
+                    },
+                    "message3": {
+                        "left": "Something",
+                        "right": "cool"
+                    },
+                    "message4": {
+                        "left": "Welcome to the next generation of",
+                        "right": "smart content serving"
+                    }
                 }
             ];
             return genericContent;

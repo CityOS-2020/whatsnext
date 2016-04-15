@@ -6,6 +6,29 @@
 </head>
 <body>
 Jahoj!!!
-<div ng-repeat="genericContentItem in genericContent">{{genericContentItem.imgUrl}}</div>
+    <div ng-repeat="genericContentItem in genericContent">
+        <div id="bg">
+            <img src="{{genericContentItem.imgUrl}}" alt="">
+            <div class="overlay"></div>
+        </div>
+        <div class="text-wrapper">
+            <div class="text-head">
+                <h1>{{genericContentItem.title.left}} <span>{{genericContentItem.title.right}}</span></h1>
+
+            </div>
+            <div class="banner-small">
+                {{genericContentItem.message1.left}} <span style="color:#e4b254; font-weight: bold">{{genericContentItem.message1.right}}</span>.
+            </div>
+            <div class="banner">
+                {{genericContentItem.message2.left}} <span style="color:#67c8d8;font-weight: bold">{{genericContentItem.message2.right}}</span>.
+            </div>
+            <div class="banner">
+                {{genericContentItem.message3.left}} <span style="color:#67c8d8;font-weight: bold">{{genericContentItem.message3.right}}</span>.
+            </div>
+            <div class="banner-small">
+                {{genericContentItem.message4.left}} <span style="color:#e4b254; font-weight: bold">{{genericContentItem.message4.right}}</span>.
+            </div>
+        </div>
+    </div>
 </body>
 </html>

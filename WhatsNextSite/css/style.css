@@ -1,2 +1,98 @@
-﻿body {
+﻿body {}
+
+#bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+}
+
+#bg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: url(../images/02.png) center center;
+    opacity: .2 !important;
+}
+
+.text-wrapper {
+    position: absolute;
+    margin: auto;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    left: 18%;
+    top: 70%;
+}
+
+.banner {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0 10px;
+    font-size: 1.6em;
+    font-weight: 0;
+    font-family: "Raleway";
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    width: 240px;
+    text-transform: uppercase;
+}
+
+.banner+.banner {
+    width: 320px;
+}
+
+.banner-small {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0 10px;
+    font-size: .8em;
+    font-weight: 0;
+    font-family: "Raleway";
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.banner-small:last-child {
+    margin-top: 10px;
+}
+
+.text-head h1 {
+    position: relative;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.3), 1px 1px 1px rgba(0, 0, 0, 0.3), 0 0 10px #000;
+    letter-spacing: -1px;
+    font-size: 4em;
+    margin: 0.5em 0;
+    pointer-events: none;
+    color: #67c8d8;
+}
+
+.text-head h1 span {
+    color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 900;
+    font-family: "Raleway";
 }
