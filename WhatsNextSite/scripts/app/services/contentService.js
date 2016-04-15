@@ -8,17 +8,23 @@
         var entityName = 'content';
 
 
-        var getAverages = function () {
-            return dataService.getAll(entityName);
-        }
-
-        var updateAverages = function (id, entity) {
-            return dataService.updateEntity(entityName, id, entity);
+        var getGenericContent = function () {
+            //return dataService.getAll(entityName);
+            var genericContent = [
+                {
+                    "id": 0,
+                    "imgUrl": "url1"
+                },
+                {
+                    "id": 2,
+                    "imgUrl": "url2"
+                }
+            ];
+            return genericContent;
         }
 
         return {
-            getAverages: getAverages,
-            updateAverages: updateAverages
+            getGenericContent: getGenericContent
         };
     }
 }());
