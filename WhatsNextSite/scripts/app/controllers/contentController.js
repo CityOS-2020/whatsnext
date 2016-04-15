@@ -27,6 +27,15 @@
             }
         }, $scope.currentContent.duration);
 
+        $("body").vegas({
+            delay: 7000,
+            slides: [
+                { src: "../img/unsplash1.jpg" },
+                { src: "../img/unsplash2.jpg" },
+                { src: "../img/unsplash3.jpg" },
+                { src: "../img/unsplash4.jpg" }
+            ]
+        });
 
     };
 }());
