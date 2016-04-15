@@ -33,7 +33,8 @@
                     "message4": {
                         "left": "Welcome to the next generation of",
                         "right": "smart content serving"
-                    }
+                    },
+                    "duration": 2000
                 },
                 {
                     "id": 1,
@@ -53,7 +54,29 @@
                     "message4": {
                         "left": "Welcome to the next generation of",
                         "right": "smart content serving"
-                    }
+                    },
+                    "duration": 3000
+                },
+                {
+                    "id": 2,
+                    "imgUrl": "img/unsplash3.jpg",
+                    "message1": {
+                        "left": "Welcome to the next generation of",
+                        "right": "smart content serving"
+                    },
+                    "message2": {
+                        "left": "Something",
+                        "right": "cool"
+                    },
+                    "message3": {
+                        "left": "Something",
+                        "right": "cool"
+                    },
+                    "message4": {
+                        "left": "Welcome to the next generation of",
+                        "right": "smart content serving"
+                    },
+                    "duration": 2000
                 }
             ];
             return genericContent;
