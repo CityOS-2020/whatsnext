@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html ng-app="whatsNextApp">
+<head>
+    <title>What's Next - Advanced Media Delivery</title>
+    <meta charset="utf-8" />
+    <link href="scripts/angular-csp.css" rel="stylesheet" />
+    <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+    <script src="scripts/angular-animate.min.js"></script>
+    <script src="scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+</head>
+<body ng-controller="contentController">
+    <div ng-include="'views/navbar.html'"></div>
+    <div ng-view></div>
+
+    <p>Nothing here {{'yet' + '!'}}</p>
+
+    <!--Our stuff-->
+    <script src="scripts/app/app.js"></script>
+    <script src="scripts/app/constants.js"></script>
+
+    <!--services-->
+    <script src="scripts/app/services/dataService.js"></script>
+    <script src="scripts/app/services/contentService.js"></script>
+
+    <!--controllers-->
+    <script src="scripts/app/controllers/contentController.js"></script>
+
+    <div style="background-color: red; width: 100px" ng-click="alert('evo me')"></div>
+</body>
+</html>
