@@ -4,17 +4,43 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using WhatsNext.Entities;
+using WhatsNext.Repository;
 
 namespace WhatsNext.Controllers
 {
     public class ContentController : ApiController
     {
         // GET: api/Content
-        public IEnumerable<string> Get()
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
+        [EnableCors("http://localhost:25592", "*", "*")]
+        public IHttpActionResult Get()
         {
-            return new string[] { "value1", "value2" };
-        }
+            try
+            {
+                using (var unitOfWork = new UnitOfWork(new WhatsNextEntities()))
+                {
+                    var content = from a in unitOfWork.Content.GetAll()
+                                     select new
+                                     {
+                                         id = a.Id,
+                                         imgUrl = a.ImgUrl
+                                     };
+                    if (content == null)
+                        return NotFound();
 
+                    return Ok(content.ToList());
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
         // GET: api/Content/5
         public string Get(int id)
         {

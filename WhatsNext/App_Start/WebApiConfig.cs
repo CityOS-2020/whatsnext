@@ -21,7 +21,7 @@ namespace WhatsNext
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            var cors = new EnableCorsAttribute("*", "*", "*");
+            var cors = new EnableCorsAttribute("http://localhost:25592", "*", "*");
             config.EnableCors(cors);
 
             var jsonFormatter = config.Formatters.JsonFormatter;

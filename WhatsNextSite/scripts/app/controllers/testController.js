@@ -19,7 +19,7 @@
                 approachBeingServiced = data.length > 0;
 
                 if (!approachBeingServiced) {
-                    dataService.saveEntity('Approach', approach).then(function (data) {
+                    dataService.saveEntity('Approach', {id:2}).then(function (data) {
                         var savedApproach = data;
                     });
                 }
