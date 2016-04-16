@@ -5,25 +5,55 @@
 	<meta charset="utf-8" />
 </head>
 <body>
-    <div id="bg">
-        <div style="background-image: url({{currentContent.imgUrl}}); animation-delay: {{currentContent.animation}}s"> </div>
+    <div id="message">
+        <div class="message-wrapper">
+            <div class="outer-wrapper">
+                <div class="image-wrapper"></div>
+            </div>
+            <div class="text-head">
+                <h1 id="message-h1">Welcome to Dubrovnik <span>Benjamin!</span></h1>
+            </div>
+            <div class="banner-small" style="width:800px; overflow:hidden; text-align:center; margin:0 auto; background-color:transparent;">
+                This is the new generation of guidance. See only what you are interesed in and go only where you would like to go. Welcome to the next generation of <span style="color:#e4b254; font-weight: bold">smart content serving</span>.
+            </div>
+        </div>
     </div>
+
+
+    <div id="bg-main">
+        <div ng-show="currentContent.mediaType == 'img'" style="background-image: url({{currentContent.imgUrl}}); animation-delay: {{currentContent.animation}}s;"> </div>
+
+        <video ng-show="currentContent.mediaType == 'video'" autoplay loop id="bgvid" ng-src="{{currentContent.imgUrl}}" controls>
+        </video>
+        <div class="overlay"></div>
+    </div>
+    <div ng-show="currentContent.mediaType == 'video'" class="image-wrapper-qr"></div>
+
+
+    <div id="bg" ng-show="currentContent.display == 'display'">
+        <div class="person-container">
+            <div class="image-wrapper-small">
+            </div>
+            <div>{{currentContent.mainText.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.mainText.right}} </span>.</div>
+        </div>
+    </div>
+    
 
     <div class="text-wrapper">
         <div class="text-head">
             <h1>{{currentContent.title.left}} <span>{{currentContent.title.right}}</span></h1>
         </div>
         <div class="banner-small animated {{currentContent.slide}}">
-            {{currentContent.message1.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.message1.right}}</span>.
+            <div>{{currentContent.message1.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.message1.right}}</span>.</div>
         </div>
         <div class="banner animated {{currentContent.slide}}">
-            {{currentContent.message2.left}} <span style="color:#67c8d8;font-weight: bold">{{currentContent.message2.right}}</span>.
+            <div>{{currentContent.message2.left}} <span style="color:#67c8d8;font-weight: bold">{{currentContent.message2.right}}</span>.</div>
         </div>
         <div class="banner animated {{currentContent.slide}}">
-            {{currentContent.message3.left}} <span style="color:#67c8d8;font-weight: bold">{{currentContent.message3.right}}</span>.
+            <div>{{currentContent.message3.left}} <span style="color:#67c8d8;font-weight: bold">{{currentContent.message3.right}}</span>.</div>
         </div>
         <div class="banner-small animated {{currentContent.slide}}">
-            {{currentContent.message4.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.message4.right}}</span>.
+            <div>{{currentContent.message4.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.message4.right}}</span>.</div>
         </div>
     </div>
 </body>

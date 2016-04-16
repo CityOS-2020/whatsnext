@@ -1,20 +1,12 @@
 ol,ul {
 	list-style:none;
 }
-body{
-	font-family: Constantia, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
-	background: #000;
-	font-weight: 400;
-	font-size: 15px;
-	color: #aa3e03;
-	overflow-y: scroll;
-	overflow-x: hidden;
-}
+
 .ie7 body{
 	overflow:hidden;
 }
-#bg,
-#bg:after {
+#bg-main,
+#bg-main:after {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -22,11 +14,11 @@ body{
     left: 0px;
     z-index: 0;
 }
-#bg:after {
+#bg-main:after {
     content: '';
     background:` transparent url(../images/pattern.png) repeat top left;
 }
-#bg div {
+#bg-main div {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -36,7 +28,6 @@ body{
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: none;
-    opacity: 0;
     z-index: 0;
 	-webkit-backface-visibility: hidden;
     -webkit-animation: imageAnimation 15s linear infinite 0s;
@@ -48,211 +39,161 @@ body{
 
 @-webkit-keyframes imageAnimation { 
 	0% {
-	    opacity: 0.8;
 	    -webkit-animation-timing-function: ease-in;
 	}
 	8% {
-	    opacity: 1;
 	    -webkit-transform: scale(1.05);
 	    -webkit-animation-timing-function: ease-out;
 	}
 	17% {
-	    opacity: 1;
 	    -webkit-transform: scale(1.1);
 	}
 	25% {
-	    opacity: 0.8;
 	    -webkit-transform: scale(1.3);
 	}
-	100% { opacity: 0.5 }
+	100% {  }
 }
 @-moz-keyframes imageAnimation { 
 	0% {
-	    opacity: 0.8;
 	    -moz-animation-timing-function: ease-in;
 	}
 	8% {
-	    opacity: 1;
 	    -moz-transform: scale(1.05);
 	    -moz-animation-timing-function: ease-out;
 	}
 	17% {
-	    opacity: 1;
 	    -moz-transform: scale(1.1);
 	}
 	25% {
-	    opacity: 0.8;
 	    -moz-transform: scale(1.3);
 	}
-	100% { opacity: 0.5 }
+	100% {  }
 }
 @-o-keyframes imageAnimation { 
 	0% {
-	    opacity: 0.8;
 	    -o-animation-timing-function: ease-in;
 	}
 	8% {
-	    opacity: 1;
 	    -o-transform: scale(1.05);
 	    -o-animation-timing-function: ease-out;
 	}
 	17% {
-	    opacity: 1;
 	    -o-transform: scale(1.1);
 	}
 	25% {
-	    opacity: 0.8;
 	    -o-transform: scale(1.3);
 	}
-	100% { opacity: 0.5 }
+	100% {  }
 }
 @-ms-keyframes imageAnimation { 
 	0% {
-	    opacity: 0.8;
 	    -ms-animation-timing-function: ease-in;
 	}
 	8% {
-	    opacity: 1;
 	    -ms-transform: scale(1.05);
 	    -ms-animation-timing-function: ease-out;
 	}
 	17% {
-	    opacity: 1;
 	    -ms-transform: scale(1.1);
 	}
 	25% {
-	    opacity: 0.8;
 	    -ms-transform: scale(1.3);
 	}
-	100% { opacity: 0.5 }
+	100% {  }
 }
 @keyframes imageAnimation { 
 	0% {
-	    opacity: 0.8;
 	    animation-timing-function: ease-in;
 	}
 	8% {
-	    opacity: 1;
 	    transform: scale(1.05);
 	    animation-timing-function: ease-out;
 	}
 	17% {
-	    opacity: 1;
 	    transform: scale(1.1);
 	}
 	25% {
-	    opacity: 0.8;
 	    transform: scale(1.3);
 	}
-	100% { opacity: 0.5 }
+	100% {  }
 }
 @-webkit-keyframes titleAnimation { 
 	0% {
-	    opacity: 0.8;
 	    -webkit-transform: translateX(200px);
 	}
 	8% {
-	    opacity: 1;
 	    -webkit-transform: translateX(0px);
 	}
 	17% {
-	    opacity: 1;
 	    -webkit-transform: translateX(0px);
 	}
 	19% {
-	    opacity: 0.8;
 	    -webkit-transform: translateX(-400px);
 	}
-	25% { opacity: 0.7 }
-	100% { opacity: 0.4 }
+	25% {  }
+	100% {  }
 }
 @-moz-keyframes titleAnimation { 
 	0% {
-	    opacity: 0.8;
 	    -moz-transform: translateX(200px);
 	}
 	8% {
-	    opacity: 1;
 	    -moz-transform: translateX(0px);
 	}
 	17% {
-	    opacity: 1;
 	    -moz-transform: translateX(0px);
 	}
 	19% {
-	    opacity: 0.8;
 	    -moz-transform: translateX(-400px);
 	}
-	25% { opacity: 0.7 }
-	100% { opacity: 0.4 }
+	25% {  }
+	100% {  }
 }
 @-o-keyframes titleAnimation { 
 	0% {
-	    opacity: 0.8;
 	    -o-transform: translateX(200px);
 	}
 	8% {
-	    opacity: 1;
 	    -o-transform: translateX(0px);
 	}
 	17% {
-	    opacity: 1;
 	    -o-transform: translateX(0px);
 	}
 	19% {
-	    opacity: 0.8;
 	    -o-transform: translateX(-400px);
 	}
-	25% { opacity: 0.7 }
-	100% { opacity: 0.4 }
+	25% {  }
+	100% {  }
 }
 @-ms-keyframes titleAnimation { 
 	0% {
-	    opacity: 0.8;
 	    -ms-transform: translateX(200px);
 	}
 	8% {
-	    opacity: 1;
 	    -ms-transform: translateX(0px);
 	}
 	17% {
-	    opacity: 1;
 	    -ms-transform: translateX(0px);
 	}
 	19% {
-	    opacity: 0.8;
 	    -ms-transform: translateX(-400px);
 	}
-	25% { opacity: 0.7 }
-	100% { opacity: 0.4 }
+	25% {  }
+	100% {  }
 }
 @keyframes titleAnimation { 
 	0% {
-	    opacity: 0.8;
 	    transform: translateX(200px);
 	}
 	8% {
-	    opacity: 1;
 	    transform: translateX(0px);
 	}
 	17% {
-	    opacity: 1;
 	    transform: translateX(0px);
 	}
 	19% {
-	    opacity: 0.8;
 	    transform: translateX(-400px);
 	}
-	25% { opacity: 0.7 }
-	100% { opacity: 0.4 }
-}
-/* Show at least something when animations not supported */
-.no-cssanimations .cb-slideshow li span{
-	opacity: 1;
-}
-@media screen and (max-width: 1140px) { 
-	.cb-slideshow li div h3 { font-size: 100px }
-}
-@media screen and (max-width: 600px) { 
-	.cb-slideshow li div h3 { font-size: 50px }
+	25% {  }
+	100% { o }
 }

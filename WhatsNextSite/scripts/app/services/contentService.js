@@ -15,8 +15,8 @@
                     "id": 0,
                     "imgUrl": "img/unsplash1.jpg",
                     "title": {
-                        "left": "what's",
-                        "right": "next"
+                        "left": "mamma mia",
+                        "right": "pizza"
                     },
                     "message1": {
                         "left": "Welcome to the next generation of",
@@ -37,34 +37,36 @@
 
                     "duration": 5000,
                     "animation": 0,
-                    "slide": "slideInLeft"
+                    "slide": "slideInLeft",
+                    "mediaType": "img"
                 },
                 {
                     "id": 1,
-                    "imgUrl": "img/unsplash2.jpg",
+                    "imgUrl": "img/video.mp4",
                     "title": {
-                        "left": "Second",
-                        "right": "slide"
+                        "left": "welcome to",
+                        "right": "dubrovnik"
                     },
                     "message1": {
-                        "left": "This is second image",
-                        "right": "that comes after the first"
+                        "left": "We wish you a pleasant and comfortable stay in Dubrovnik and hope your visit will be one of many",
+                        "right": "memorable experiences"
                     },
                     "message2": {
-                        "left": "This is",
-                        "right": "Sparta"
+                        "left": "Try",
+                        "right": "what's next"
                     },
                     "message3": {
-                        "left": "Said",
-                        "right": "someone important"
+                        "left": "Our app is completely",
+                        "right": "free"
                     },
                     "message4": {
-                        "left": "It is too late for",
-                        "right": "writing something smart"
+                        "left": "To download the app, just scan the provided",
+                        "right": "qr code"
                     },
                     "duration": 5000,
                     "animation": 5,
-                    "slide": "slideInLeft"
+                    "slide": "slideInLeft",
+                    "mediaType": "video"
                 },
                 {
                     "id": 2,
@@ -91,7 +93,8 @@
                     },
                     "duration": 5000,
                     "animation": 10,
-                    "slide": "slideInLeft"
+                    "slide": "slideInLeft",
+                    "mediaType": "img"
                 }
             ];
             return genericContent;
@@ -103,85 +106,103 @@
             var personalizedContent = [
                 {
                     "id": 3,
-                    "imgUrl": "img/unsplash4.jpg",
+                    "imgUrl": "img/pizza2.jpg",
+                    "mainText" : {
+                        "left": "Since you like pizza, you should try Mamma Mia's",
+                        "right": "Double Cheese Pizza"
+                    },
                     "title": {
-                        "left": "Personalized Content 1",
-                        "right": "next"
+                        "left": "mamma mia",
+                        "right": "pizza"
                     },
                     "message1": {
-                        "left": "Welcome to the next generation of",
-                        "right": "smart content serving"
+                        "left": "Our friends at Mamma Mia Pizzeria have their",
+                        "right": "winter sale on"
                     },
                     "message2": {
-                        "left": "Something",
-                        "right": "cool"
+                        "left": "Up to",
+                        "right": "50% off"
                     },
                     "message3": {
-                        "left": "Something",
-                        "right": "cool"
+                        "left": "Special offer",
+                        "right": "today"
                     },
                     "message4": {
-                        "left": "Welcome to the next generation of",
-                        "right": "smart content serving"
+                        "left": "This offer is valid in all our pizzerias",
+                        "right": "in Dubrovnik"
                     },
 
                     "duration": 5000,
                     "animation": 0,
-                    "slide": "slideInLeft"
+                    "slide": "slideInLeft",
+                    "display": "display",
+                    "mediaType": "img"
                 },
                 {
-                    "id": 3,
-                    "imgUrl": "img/unsplash5.jpg",
+                    "id": 4,
+                    "imgUrl": "img/lokrum.jpg",
+                    "mainText": {
+                        "left": "Since you like nice boat trips, check out the",
+                        "right": "Lokrum Boat Trip"
+                    },
                     "title": {
-                        "left": "Personalized 2",
-                        "right": "slide"
+                        "left": "boat trip",
+                        "right": "lokrum"
                     },
                     "message1": {
-                        "left": "This is second image",
-                        "right": "that comes after the first"
+                        "left": "Benjamin, you should hurry up, there are only",
+                        "right": "25 places left"
                     },
                     "message2": {
-                        "left": "This is",
-                        "right": "Sparta"
+                        "left": "Up to",
+                        "right": "50% off"
                     },
                     "message3": {
-                        "left": "Said",
-                        "right": "someone important"
+                        "left": "Special offer",
+                        "right": "today"
                     },
                     "message4": {
-                        "left": "It is too late for",
-                        "right": "writing something smart"
+                        "left": "This offer is valid only while you are",
+                        "right": "in Dubrovnik"
                     },
                     "duration": 5000,
                     "animation": 5,
-                    "slide": "slideInLeft"
+                    "slide": "slideInLeft",
+                    "display": "display",
+                    "mediaType": "img"
                 },
                 {
                     "id": 5,
                     "imgUrl": "img/unsplash6.jpg",
+                    "mainText": {
+                        "left": "Some of your friends bought beautiful sunglasses",
+                        "right": "in Dubrovnik"
+                    },
                     "title": {
-                        "left": "Personalized 3",
-                        "right": "Idea"
+                        "left": "glasses and sunglasses",
+                        "right": "vista"
                     },
                     "message1": {
-                        "left": "This is what's",
-                        "right": "next ext xt t"
+                        "left": "Benjamin, the sun is always shining here. Consider buying",
+                        "right": "Rayban sunglasses"
                     },
                     "message2": {
-                        "left": "Welcome",
-                        "right": "master"
+                        "left": "Up to",
+                        "right": "50% off"
                     },
                     "message3": {
-                        "left": "I ahve",
-                        "right": "missed you"
+                        "left": "Special offer",
+                        "right": "till Monday"
                     },
                     "message4": {
-                        "left": "Don't worry. Next time",
-                        "right": "I will have more precise gun"
+                        "left": "This offer is valid only while you are",
+                        "right": "in Dubrovnik"
                     },
                     "duration": 5000,
                     "animation": 10,
-                    "slide": "slideInLeft"
+                    "slide": "slideInLeft",
+                    "display": "display",
+                    "mediaType": "img"
                 }
             ];
             return personalizedContent;
