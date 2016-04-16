@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using WhatsNext.Entities;
 using WhatsNext.Repository;
@@ -13,6 +14,7 @@ namespace WhatsNext.Controllers
     public class ApproachController : ApiController
     {
         // GET: api/Approach
+        [EnableCors("http://localhost:25592", "*", "*")]
         public IHttpActionResult Get()
         {
             try

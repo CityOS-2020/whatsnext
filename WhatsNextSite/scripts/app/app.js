@@ -7,5 +7,9 @@ whatsNextApp.config(function ($routeProvider) {
             templateUrl: "scripts/app/views/content.html",
             controller: "contentController"
         })
+        .when("/test", {
+            templateUrl: "scripts/app/views/test.html",
+            controller: "testController"
+        })
         .otherwise({ redirectTo: "/content" });
 });
