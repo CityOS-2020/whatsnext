@@ -17,9 +17,9 @@ namespace WhatsNext.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Users_Roles = new HashSet<Users_Roles>();
             this.Approaches = new HashSet<Approach>();
-            this.Users_Interests = new HashSet<Users_Interests>();
+            this.Users_Roles = new HashSet<Users_Roles>();
+            this.Interests = new HashSet<Interest>();
         }
     
         public long Id { get; set; }
@@ -30,10 +30,10 @@ namespace WhatsNext.Entities
         public string HomeTown { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users_Roles> Users_Roles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Approach> Approaches { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users_Interests> Users_Interests { get; set; }
+        public virtual ICollection<Users_Roles> Users_Roles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Interest> Interests { get; set; }
     }
 }

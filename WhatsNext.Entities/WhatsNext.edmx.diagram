@@ -4,20 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f25f1e6dcec94e6ab33a63156e36eaf6" Name="Diagram1">
+      <Diagram DiagramId="16bc2d57b42e4efc95bbd7340ba4a65a" Name="Diagram1">
+        <EntityTypeShape EntityType="WhatsNextModel.Approach" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="WhatsNextModel.Role" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="WhatsNextModel.sysdiagram" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WhatsNextModel.User" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WhatsNextModel.Users_Roles" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WhatsNextModel.sysdiagram" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WhatsNextModel.User" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WhatsNextModel.Users_Roles" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="WhatsNextModel.FK_Approaches_Users" ManuallyRouted="false" />
         <AssociationConnector Association="WhatsNextModel.FK_Users_Roles_Roles" ManuallyRouted="false" />
         <AssociationConnector Association="WhatsNextModel.FK_Users_Roles_Users" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="WhatsNextModel.Approach" Width="1.5" PointX="5.375" PointY="0.75" />
-        <AssociationConnector Association="WhatsNextModel.FK_Approaches_Users" />
-        <EntityTypeShape EntityType="WhatsNextModel.Interest" Width="1.5" PointX="5.375" PointY="3.875" />
-        <EntityTypeShape EntityType="WhatsNextModel.Users_Interests" Width="1.5" PointX="7.625" PointY="4.875" />
-        <AssociationConnector Association="WhatsNextModel.FK_Interests_Interests" />
-        <AssociationConnector Association="WhatsNextModel.FK_Users_Interests_Interests" />
-        <AssociationConnector Association="WhatsNextModel.FK_Users_Interests_Users" />
+        <EntityTypeShape EntityType="WhatsNextModel.Interest" Width="1.5" PointX="3" PointY="7" />
+        <AssociationConnector Association="WhatsNextModel.FK_Interests_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

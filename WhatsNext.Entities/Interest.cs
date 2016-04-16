@@ -14,21 +14,10 @@ namespace WhatsNext.Entities
     
     public partial class Interest
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Interest()
-        {
-            this.Interests1 = new HashSet<Interest>();
-            this.Users_Interests = new HashSet<Users_Interests>();
-        }
-    
         public long Id { get; set; }
+        public long FKUser { get; set; }
         public string Name { get; set; }
-        public Nullable<long> FKInterest { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Interest> Interests1 { get; set; }
-        public virtual Interest Interest1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users_Interests> Users_Interests { get; set; }
+        public virtual User User { get; set; }
     }
 }

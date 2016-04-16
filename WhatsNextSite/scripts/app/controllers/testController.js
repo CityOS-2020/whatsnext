@@ -38,6 +38,35 @@
             });
         }
 
+        $scope.updateUserInterests = function() {
+            var theUser = {
+                "Id": 1,
+                "UserName": "g",
+                "FirstName": "g",
+                "LastName": "g",
+                "MiddleName": "g",
+                "HomeTown": "g",
+                "Interests": [
+                    {
+                        "FKUser": 1,
+                        "Name": "rr"
+                    },
+                    {
+                        "FKUser": 1,
+                        "Name": "tt"
+                    },
+                    {
+                        "FKUser": 1,
+                        "Name": "yy"
+                    }
+                ]
+            }
+
+            dataService.updateEntity("users", 0, theUser).then(function (data) {
+                alert(data);
+            });
+        }
+
         //contentService.getGenericContent().then(function(data) {
         //    scope.genericContent = data;
         //});

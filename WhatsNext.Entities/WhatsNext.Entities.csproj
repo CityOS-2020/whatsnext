@@ -73,9 +73,6 @@
     <Compile Include="User.cs">
       <DependentUpon>WhatsNext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Users_Interests.cs">
-      <DependentUpon>WhatsNext.tt</DependentUpon>
-    </Compile>
     <Compile Include="Users_Roles.cs">
       <DependentUpon>WhatsNext.tt</DependentUpon>
     </Compile>
