@@ -13,6 +13,14 @@
           <Property Name="FKUser" Type="bigint" Nullable="false" />
           <Property Name="EventTime" Type="datetime" />
         </EntityType>
+        <EntityType Name="Interests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FKInterest" Type="bigint" />
+        </EntityType>
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="Id" />
@@ -41,6 +49,14 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="HomeTown" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Users_Interests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FKUser" Type="bigint" Nullable="false" />
+          <Property Name="FKInterest" Type="bigint" Nullable="false" />
+        </EntityType>
         <EntityType Name="Users_Roles">
           <Key>
             <PropertyRef Name="Id" />
@@ -57,6 +73,42 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Approaches">
+              <PropertyRef Name="FKUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Interests_Interests">
+          <End Role="Interests" Type="Self.Interests" Multiplicity="0..1" />
+          <End Role="Interests1" Type="Self.Interests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Interests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Interests1">
+              <PropertyRef Name="FKInterest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Interests_Interests">
+          <End Role="Interests" Type="Self.Interests" Multiplicity="1" />
+          <End Role="Users_Interests" Type="Self.Users_Interests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Interests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users_Interests">
+              <PropertyRef Name="FKInterest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Interests_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Users_Interests" Type="Self.Users_Interests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users_Interests">
               <PropertyRef Name="FKUser" />
             </Dependent>
           </ReferentialConstraint>
@@ -118,13 +170,27 @@
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="WhatsNextModelStoreContainer">
           <EntitySet Name="Approaches" EntityType="Self.Approaches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Interests" EntityType="Self.Interests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users_Interests" EntityType="Self.Users_Interests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users_Roles" EntityType="Self.Users_Roles" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Approaches_Users" Association="Self.FK_Approaches_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Approaches" EntitySet="Approaches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Interests_Interests" Association="Self.FK_Interests_Interests">
+            <End Role="Interests" EntitySet="Interests" />
+            <End Role="Interests1" EntitySet="Interests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Interests_Interests" Association="Self.FK_Users_Interests_Interests">
+            <End Role="Interests" EntitySet="Interests" />
+            <End Role="Users_Interests" EntitySet="Users_Interests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Interests_Users" Association="Self.FK_Users_Interests_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Users_Interests" EntitySet="Users_Interests" />
           </AssociationSet>
           <AssociationSet Name="FK_Users_Roles_Roles" Association="Self.FK_Users_Roles_Roles">
             <End Role="Roles" EntitySet="Roles" />
@@ -169,6 +235,7 @@
           <Property Name="HomeTown" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Users_Roles" Relationship="Self.FK_Users_Roles_Users" FromRole="Users" ToRole="Users_Roles" />
           <NavigationProperty Name="Approaches" Relationship="WhatsNextModel.FK_Approaches_Users" FromRole="User" ToRole="Approach" />
+          <NavigationProperty Name="Users_Interests" Relationship="WhatsNextModel.FK_Users_Interests_Users" FromRole="User" ToRole="Users_Interests" />
         </EntityType>
         <EntityType Name="Users_Roles">
           <Key>
@@ -252,6 +319,20 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Approach" EntitySet="Approaches" />
           </AssociationSet>
+          <EntitySet Name="Interests" EntityType="WhatsNextModel.Interest" />
+          <EntitySet Name="Users_Interests" EntityType="WhatsNextModel.Users_Interests" />
+          <AssociationSet Name="FK_Interests_Interests" Association="WhatsNextModel.FK_Interests_Interests">
+            <End Role="Interest" EntitySet="Interests" />
+            <End Role="Interest1" EntitySet="Interests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Interests_Interests" Association="WhatsNextModel.FK_Users_Interests_Interests">
+            <End Role="Interest" EntitySet="Interests" />
+            <End Role="Users_Interests" EntitySet="Users_Interests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Interests_Users" Association="WhatsNextModel.FK_Users_Interests_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Users_Interests" EntitySet="Users_Interests" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -281,6 +362,63 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Approach">
+              <PropertyRef Name="FKUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Interest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FKInterest" Type="Int64" />
+          <NavigationProperty Name="Interests1" Relationship="WhatsNextModel.FK_Interests_Interests" FromRole="Interest" ToRole="Interest1" />
+          <NavigationProperty Name="Interest1" Relationship="WhatsNextModel.FK_Interests_Interests" FromRole="Interest1" ToRole="Interest" />
+          <NavigationProperty Name="Users_Interests" Relationship="WhatsNextModel.FK_Users_Interests_Interests" FromRole="Interest" ToRole="Users_Interests" />
+        </EntityType>
+        <EntityType Name="Users_Interests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FKUser" Type="Int64" Nullable="false" />
+          <Property Name="FKInterest" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Interest" Relationship="WhatsNextModel.FK_Users_Interests_Interests" FromRole="Users_Interests" ToRole="Interest" />
+          <NavigationProperty Name="User" Relationship="WhatsNextModel.FK_Users_Interests_Users" FromRole="Users_Interests" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Interests_Interests">
+          <End Type="WhatsNextModel.Interest" Role="Interest" Multiplicity="0..1" />
+          <End Type="WhatsNextModel.Interest" Role="Interest1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Interest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Interest1">
+              <PropertyRef Name="FKInterest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Interests_Interests">
+          <End Type="WhatsNextModel.Interest" Role="Interest" Multiplicity="1" />
+          <End Type="WhatsNextModel.Users_Interests" Role="Users_Interests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Interest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users_Interests">
+              <PropertyRef Name="FKInterest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Interests_Users">
+          <End Type="WhatsNextModel.User" Role="User" Multiplicity="1" />
+          <End Type="WhatsNextModel.Users_Interests" Role="Users_Interests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users_Interests">
               <PropertyRef Name="FKUser" />
             </Dependent>
           </ReferentialConstraint>
@@ -359,6 +497,24 @@
             <EntityTypeMapping TypeName="WhatsNextModel.Approach">
               <MappingFragment StoreEntitySet="Approaches">
                 <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+                <ScalarProperty Name="FKUser" ColumnName="FKUser" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Interests">
+            <EntityTypeMapping TypeName="WhatsNextModel.Interest">
+              <MappingFragment StoreEntitySet="Interests">
+                <ScalarProperty Name="FKInterest" ColumnName="FKInterest" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users_Interests">
+            <EntityTypeMapping TypeName="WhatsNextModel.Users_Interests">
+              <MappingFragment StoreEntitySet="Users_Interests">
+                <ScalarProperty Name="FKInterest" ColumnName="FKInterest" />
                 <ScalarProperty Name="FKUser" ColumnName="FKUser" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

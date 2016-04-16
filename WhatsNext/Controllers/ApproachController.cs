@@ -71,8 +71,22 @@ namespace WhatsNext.Controllers
         }
 
         // DELETE: api/Approach/5
-        public void Delete(int id)
+        [ResponseType(typeof(Approach))]
+        public IHttpActionResult Delete(long id)
         {
+            using (var unitOfWork = new UnitOfWork(new WhatsNextEntities()))
+            {
+                Approach approach = unitOfWork.Approaches.Get(id);
+                if (approach == null)
+                {
+                    return NotFound();
+                }
+
+                unitOfWork.Approaches.Remove(approach);
+                unitOfWork.SaveChanges();
+
+                return Ok(approach);
+            }
         }
     }
 }

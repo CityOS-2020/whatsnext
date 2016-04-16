@@ -13,6 +13,11 @@
         <AssociationConnector Association="WhatsNextModel.FK_Users_Roles_Users" ManuallyRouted="false" />
         <EntityTypeShape EntityType="WhatsNextModel.Approach" Width="1.5" PointX="5.375" PointY="0.75" />
         <AssociationConnector Association="WhatsNextModel.FK_Approaches_Users" />
+        <EntityTypeShape EntityType="WhatsNextModel.Interest" Width="1.5" PointX="5.375" PointY="3.875" />
+        <EntityTypeShape EntityType="WhatsNextModel.Users_Interests" Width="1.5" PointX="7.625" PointY="4.875" />
+        <AssociationConnector Association="WhatsNextModel.FK_Interests_Interests" />
+        <AssociationConnector Association="WhatsNextModel.FK_Users_Interests_Interests" />
+        <AssociationConnector Association="WhatsNextModel.FK_Users_Interests_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
