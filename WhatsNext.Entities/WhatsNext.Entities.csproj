@@ -54,6 +54,9 @@
     <Compile Include="Approach.cs">
       <DependentUpon>WhatsNext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Interest.cs">
+      <DependentUpon>WhatsNext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs">
       <DependentUpon>WhatsNext.tt</DependentUpon>
@@ -68,6 +71,9 @@
       <DependentUpon>WhatsNext.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
+      <DependentUpon>WhatsNext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users_Interests.cs">
       <DependentUpon>WhatsNext.tt</DependentUpon>
     </Compile>
     <Compile Include="Users_Roles.cs">
