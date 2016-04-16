@@ -18,6 +18,7 @@ namespace WhatsNext.Entities
         public User()
         {
             this.Users_Roles = new HashSet<Users_Roles>();
+            this.Approaches = new HashSet<Approach>();
         }
     
         public long Id { get; set; }
@@ -29,5 +30,7 @@ namespace WhatsNext.Entities
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Users_Roles> Users_Roles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Approach> Approaches { get; set; }
     }
 }

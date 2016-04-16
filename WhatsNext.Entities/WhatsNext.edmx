@@ -4,7 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WhatsNextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WhatsNextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Approaches">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FKUser" Type="bigint" Nullable="false" />
+          <Property Name="EventTime" Type="datetime" />
+        </EntityType>
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="Id" />
@@ -41,6 +49,18 @@
           <Property Name="FKUser" Type="bigint" Nullable="false" />
           <Property Name="FKRole" Type="bigint" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Approaches_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Approaches" Type="Self.Approaches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Approaches">
+              <PropertyRef Name="FKUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Users_Roles_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="Users_Roles" Type="Self.Users_Roles" Multiplicity="*" />
@@ -97,10 +117,15 @@
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="WhatsNextModelStoreContainer">
+          <EntitySet Name="Approaches" EntityType="Self.Approaches" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users_Roles" EntityType="Self.Users_Roles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Approaches_Users" Association="Self.FK_Approaches_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Approaches" EntitySet="Approaches" />
+          </AssociationSet>
           <AssociationSet Name="FK_Users_Roles_Roles" Association="Self.FK_Users_Roles_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users_Roles" EntitySet="Users_Roles" />
@@ -110,8 +135,7 @@
             <End Role="Users_Roles" EntitySet="Users_Roles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WhatsNextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -144,6 +168,7 @@
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HomeTown" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Users_Roles" Relationship="Self.FK_Users_Roles_Users" FromRole="Users" ToRole="Users_Roles" />
+          <NavigationProperty Name="Approaches" Relationship="WhatsNextModel.FK_Approaches_Users" FromRole="User" ToRole="Approach" />
         </EntityType>
         <EntityType Name="Users_Roles">
           <Key>
@@ -222,6 +247,11 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Approaches" EntityType="WhatsNextModel.Approach" />
+          <AssociationSet Name="FK_Approaches_Users" Association="WhatsNextModel.FK_Approaches_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Approach" EntitySet="Approaches" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -234,6 +264,27 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Approach">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FKUser" Type="Int64" Nullable="false" />
+          <Property Name="EventTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="WhatsNextModel.FK_Approaches_Users" FromRole="Approach" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Approaches_Users">
+          <End Type="WhatsNextModel.User" Role="User" Multiplicity="1" />
+          <End Type="WhatsNextModel.Approach" Role="Approach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Approach">
+              <PropertyRef Name="FKUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -304,6 +355,15 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="WhatsNextModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="WhatsNextModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Approaches">
+            <EntityTypeMapping TypeName="WhatsNextModel.Approach">
+              <MappingFragment StoreEntitySet="Approaches">
+                <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+                <ScalarProperty Name="FKUser" ColumnName="FKUser" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

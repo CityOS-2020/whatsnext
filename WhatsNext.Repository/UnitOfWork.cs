@@ -13,6 +13,7 @@ namespace WhatsNext.Repository
         private readonly WhatsNextEntities _context;
 
         public IUserRepository Users { get; private set; }
+        public IApproachRepository Approaches { get; private set; }
 
         public UnitOfWork(WhatsNextEntities context)
         {
@@ -24,6 +25,7 @@ namespace WhatsNext.Repository
         private void InstantiateRepositories()
         {
             Users = new UserRepository(_context);
+            Approaches = new ApproachRepository(_context);
         }
 
         public int SaveChanges()

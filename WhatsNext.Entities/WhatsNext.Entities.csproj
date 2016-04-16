@@ -51,9 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Approach.cs">
+      <DependentUpon>WhatsNext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Roles.cs">
+    <Compile Include="Role.cs">
       <DependentUpon>WhatsNext.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
@@ -62,10 +64,10 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>WhatsNext.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>WhatsNext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Users.cs">
+    <Compile Include="User.cs">
       <DependentUpon>WhatsNext.tt</DependentUpon>
     </Compile>
     <Compile Include="Users_Roles.cs">
@@ -99,6 +101,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="WhatsNext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WhatsNext.edmx</DependentUpon>
@@ -109,9 +114,6 @@
       <DependentUpon>WhatsNext.edmx</DependentUpon>
       <LastGenOutput>WhatsNext.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

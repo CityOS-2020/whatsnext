@@ -7,25 +7,49 @@
 <body>
     <div id="bg">
         <div style="background-image: url({{currentContent.imgUrl}}); animation-delay: {{currentContent.animation}}s"> </div>
-        
     </div>
+
     <div class="text-wrapper">
         <div class="text-head">
             <h1>{{currentContent.title.left}} <span>{{currentContent.title.right}}</span></h1>
-
         </div>
-        <div class="banner-small">
+        <div class="banner-small animated {{currentContent.slide}}">
             {{currentContent.message1.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.message1.right}}</span>.
         </div>
-        <div class="banner">
+        <div class="banner animated {{currentContent.slide}}">
             {{currentContent.message2.left}} <span style="color:#67c8d8;font-weight: bold">{{currentContent.message2.right}}</span>.
         </div>
-        <div class="banner">
+        <div class="banner animated {{currentContent.slide}}">
             {{currentContent.message3.left}} <span style="color:#67c8d8;font-weight: bold">{{currentContent.message3.right}}</span>.
         </div>
-        <div class="banner-small">
+        <div class="banner-small animated {{currentContent.slide}}">
             {{currentContent.message4.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.message4.right}}</span>.
         </div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+            Launch demo modal
+        </button>
     </div>
+
+  
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

@@ -34,8 +34,10 @@
                         "left": "Welcome to the next generation of",
                         "right": "smart content serving"
                     },
-                    "duration": 8000,
-                    "animation": 0
+
+                    "duration": 5000,
+                    "animation": 0,
+                    "slide": "slideInLeft"
                 },
                 {
                     "id": 1,
@@ -60,8 +62,9 @@
                         "left": "It is too late for",
                         "right": "writing something smart"
                     },
-                    "duration": 8000,
-                    "animation": 0
+                    "duration": 5000,
+                    "animation": 5,
+                    "slide": "slideInLeft"
                 },
                 {
                     "id": 2,
@@ -86,8 +89,9 @@
                         "left": "Don't worry. Next time",
                         "right": "I will have more precise gun"
                     },
-                    "duration": 8000,
-                    "animation": 0
+                    "duration": 5000,
+                    "animation": 10,
+                    "slide": "slideInLeft"
                 }
             ];
             return genericContent;
