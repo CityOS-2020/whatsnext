@@ -359,3 +359,5 @@ WhatsNext/obj/Release/WhatsNext.API.csproj.FileListAbsolute.txt
 WhatsNext/obj/Release/WhatsNext.API.csprojResolveAssemblyReference.cache
 WhatsNext/obj/Release/WhatsNext.dll
 WhatsNext/obj/Release/WhatsNext.pdb
+WhatsNext/Web.config
+WhatsNext/WhatsNext.API.csproj.user
