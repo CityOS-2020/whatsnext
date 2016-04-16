@@ -34,7 +34,7 @@
                         "left": "Welcome to the next generation of",
                         "right": "smart content serving"
                     },
-                    "duration": 7000
+                    "duration": 5000
                 },
                 {
                     "id": 1,
@@ -55,7 +55,7 @@
                         "left": "Welcome to the next generation of",
                         "right": "smart content serving"
                     },
-                    "duration": 7000
+                    "duration": 5000
                 },
                 {
                     "id": 2,
@@ -76,7 +76,7 @@
                         "left": "Welcome to the next generation of",
                         "right": "smart content serving"
                     },
-                    "duration": 7000
+                    "duration": 5000
                 }
             ];
             return genericContent;

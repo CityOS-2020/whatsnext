@@ -14,17 +14,22 @@
         $scope.counter = 0;
         $scope.genericContent = contentService.getGenericContent();
         $scope.currentContent = $scope.genericContent[$scope.counter];
+        $scope.counter++;
+        $scope.firstRun = true;
+        $scope.contentLength = $scope.genericContent.length;
+        var duration = $scope.currentContent.duration;
         
 
-        $interval(function() {
-            if ($scope.counter < $scope.genericContent.length) {
-                console.log($scope.counter);
-                $scope.currentContent = $scope.genericContent[$scope.counter];
-                $scope.counter++;
+        $interval(function () {
+            $scope.currentContent = $scope.genericContent[$scope.counter];
+            duration = $scope.currentContent.duration;
+            console.log(duration);
+            if ($scope.counter >= $scope.contentLength - 1) {
+                $scope.counter = 0;
             } else {
                 console.log("reset counter");
-                $scope.counter = 0;
+                $scope.counter++;
             }
-        }, $scope.currentContent.duration);
+        }, duration);
     };
 }());
