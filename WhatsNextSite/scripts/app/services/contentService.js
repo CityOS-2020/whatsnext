@@ -18,7 +18,7 @@
                         "left": "what's",
                         "right": "next"
                     },
-                    "message1" : {
+                    "message1": {
                         "left": "Welcome to the next generation of",
                         "right": "smart content serving"
                     },
@@ -34,49 +34,60 @@
                         "left": "Welcome to the next generation of",
                         "right": "smart content serving"
                     },
-                    "duration": 7000
+                    "duration": 8000,
+                    "animation": 0
                 },
                 {
                     "id": 1,
                     "imgUrl": "img/unsplash2.jpg",
+                    "title": {
+                        "left": "Second",
+                        "right": "slide"
+                    },
                     "message1": {
-                        "left": "Welcome to the next generation of",
-                        "right": "smart content serving"
+                        "left": "This is second image",
+                        "right": "that comes after the first"
                     },
                     "message2": {
-                        "left": "Something",
-                        "right": "cool"
+                        "left": "This is",
+                        "right": "Sparta"
                     },
                     "message3": {
-                        "left": "Something",
-                        "right": "cool"
+                        "left": "Said",
+                        "right": "someone important"
                     },
                     "message4": {
-                        "left": "Welcome to the next generation of",
-                        "right": "smart content serving"
+                        "left": "It is too late for",
+                        "right": "writing something smart"
                     },
-                    "duration": 7000
+                    "duration": 8000,
+                    "animation": 0
                 },
                 {
                     "id": 2,
                     "imgUrl": "img/unsplash3.jpg",
+                    "title": {
+                        "left": "No",
+                        "right": "Idea"
+                    },
                     "message1": {
-                        "left": "Welcome to the next generation of",
-                        "right": "smart content serving"
+                        "left": "This is what's",
+                        "right": "next ext xt t"
                     },
                     "message2": {
-                        "left": "Something",
-                        "right": "cool"
+                        "left": "Welcome",
+                        "right": "master"
                     },
                     "message3": {
-                        "left": "Something",
-                        "right": "cool"
+                        "left": "I ahve",
+                        "right": "missed you"
                     },
                     "message4": {
-                        "left": "Welcome to the next generation of",
-                        "right": "smart content serving"
+                        "left": "Don't worry. Next time",
+                        "right": "I will have more precise gun"
                     },
-                    "duration": 7000
+                    "duration": 8000,
+                    "animation": 0
                 }
             ];
             return genericContent;

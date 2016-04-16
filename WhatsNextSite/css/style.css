@@ -96,3 +96,10 @@ h6 {
     font-weight: 900;
     font-family: "Raleway";
 }
+
+.magictime {
+-webkit-animation-duration: 3s;
+-moz-animation-duration: 3s;
+-o-animation-duration: 3s;
+animation-duration: 3s;
+}

@@ -16,7 +16,9 @@
         $scope.currentContent = $scope.genericContent[$scope.counter];
         
 
-        $interval(function() {
+        $interval(function () {
+
+
             if ($scope.counter < $scope.genericContent.length) {
                 console.log($scope.counter);
                 $scope.currentContent = $scope.genericContent[$scope.counter];
