@@ -43,17 +43,20 @@
         <div class="text-head">
             <h1>{{currentContent.title.left}} <span>{{currentContent.title.right}}</span></h1>
         </div>
-        <div class="banner-small animated {{currentContent.slide}}">
-            <div>{{currentContent.message1.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.message1.right}}</span>.</div>
+        <div class="banner-small" ng-show="currentContent.message1">
+            <div>{{currentContent.message1.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.message1.right}}</span></div>
         </div>
-        <div class="banner animated {{currentContent.slide}}">
-            <div>{{currentContent.message2.left}} <span style="color:#67c8d8;font-weight: bold">{{currentContent.message2.right}}</span>.</div>
+        <div class="banner" ng-show="currentContent.message2">
+            <div>{{currentContent.message2.left}} <span style="color:#67c8d8;font-weight: bold">{{currentContent.message2.right}}</span></div>
         </div>
-        <div class="banner animated {{currentContent.slide}}">
-            <div>{{currentContent.message3.left}} <span style="color:#67c8d8;font-weight: bold">{{currentContent.message3.right}}</span>.</div>
+        <div class="banner" ng-show="currentContent.message3">
+            <div>{{currentContent.message3.left}} <span style="color:#67c8d8;font-weight: bold">{{currentContent.message3.right}}</span></div>
         </div>
-        <div class="banner-small animated {{currentContent.slide}}">
-            <div>{{currentContent.message4.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.message4.right}}</span>.</div>
+        <div class="banner-small" ng-show="currentContent.message4">
+            <div>{{currentContent.message4.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.message4.right}}</span></div>
+        </div>
+        <div class="friends" style="margin-top:30px; padding-left:10px;" >
+            <div ng-repeat="friend in currentContent.friends" class="image-wrapper-small-friends" style="background-image: url{{friend.imgUrl}}"></div>
         </div>
     </div>
 </body>
