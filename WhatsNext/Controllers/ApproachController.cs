@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using WhatsNext.
+using System.Web.Http.Description;
 using WhatsNext.Entities;
 using WhatsNext.Repository;
 
@@ -13,11 +13,28 @@ namespace WhatsNext.Controllers
     public class ApproachController : ApiController
     {
         // GET: api/Approach
-        public IEnumerable<User> Get()
+        public IHttpActionResult Get()
         {
-            using (var unitOfWork = new UnitOfWork(new WhatsNextEntities()))
+            try
             {
-                return unitOfWork.Users.GetAll();
+                using (var unitOfWork = new UnitOfWork(new WhatsNextEntities()))
+                {
+                    var approaches = from a in unitOfWork.Approaches.GetAll()
+                        select new
+                        {
+                            id = a.Id,
+                            username = a.User.UserName,
+                            eventTime = a.EventTime
+                        };
+                    if (approaches == null)
+                        return NotFound();
+
+                    return Ok(approaches.ToList());
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return InternalServerError(ex);
             }
         }
 
@@ -28,8 +45,22 @@ namespace WhatsNext.Controllers
         }
 
         // POST: api/Approach
-        public void Post([FromBody]User value)
+        [ResponseType(typeof(Approach))]
+        public IHttpActionResult Post(Approach approach)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            using (var unitOfWork = new UnitOfWork(new WhatsNextEntities()))
+            {
+                unitOfWork.Approaches.Add(approach);
+                unitOfWork.SaveChanges();
+            }
+
+            return CreatedAtRoute("DefaultApi", new { id = approach.Id }, approach);
+
         }
 
         // PUT: api/Approach/5
