@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using WhatsNext.Entities;
+using WhatsNext.Models;
 using WhatsNext.Repository;
 
 namespace WhatsNext.Controllers
@@ -15,26 +16,134 @@ namespace WhatsNext.Controllers
     public class UsersController : ApiController
     {
         // GET: api/Users
-        public IEnumerable<string> Get()
+
+        [EnableCors("http://localhost:25592", "*", "*")]
+        public IHttpActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                using (var unitOfWork = new UnitOfWork(new WhatsNextEntities()))
+                {
+                    var users = unitOfWork.Users.GetAll();
+                    var userModels = new List<UserModel>();
+
+                    if (users == null)
+                        return NotFound();
+
+                    var interests = unitOfWork.Interests.GetAll();
+                    var approaches = unitOfWork.Approaches.GetAll();
+
+                    foreach (var user in users)
+                    {
+                        var userModel = new UserModel();
+                        userModel.Id = user.Id;
+                        userModel.FirstName = user.FirstName;
+                        userModel.LastName = user.LastName;
+                        userModel.MiddleName = user.MiddleName;
+                        userModel.HomeTown = user.HomeTown;
+                        userModel.UserName = userModel.UserName;
+
+                        foreach (var interest in interests)
+                        {
+                            if (interest.FKUser == user.Id)
+                            {
+                                var interestModel = new InterestModel
+                                {
+                                    FKUser = user.Id,
+                                    Name = interest.Name
+                                };
+                                userModel.Interests.Add(interestModel);
+                            }
+                        }
+
+                        foreach (var approach in approaches)
+                        {
+                            if (approach.FKUser == user.Id)
+                            {
+                                var approachModel = new ApproachModel()
+                                {
+                                    FKUser = user.Id,
+                                };
+                                userModel.Approaches.Add(approachModel);
+                            }
+                        }
+                        userModels.Add(userModel);
+                    }
+
+                    //return Ok(users.ToList());
+                    return Ok(userModels);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // GET: api/Users/5
-        public string Get(int id)
+        [EnableCors("http://localhost:25592", "*", "*")]
+        [Route("api/users/{userId}")]
+        public IHttpActionResult Get(long userId)
         {
-            return "value";
+            try
+            {
+                using (var unitOfWork = new UnitOfWork(new WhatsNextEntities()))
+                {
+                    var user = unitOfWork.Users.Get(userId);
+
+                    if (user == null)
+                        return NotFound();
+
+                    var interests = unitOfWork.Interests.GetAll();
+                    var approaches = unitOfWork.Approaches.GetAll();
+
+                    var userModel = new UserModel();
+                    userModel.Id = user.Id;
+                    userModel.FirstName = user.FirstName;
+                    userModel.LastName = user.LastName;
+                    userModel.MiddleName = user.MiddleName;
+                    userModel.HomeTown = user.HomeTown;
+                    userModel.UserName = userModel.UserName;
+
+                    foreach (var interest in interests)
+                    {
+                        if (interest.FKUser == user.Id)
+                        {
+                            var interestModel = new InterestModel
+                            {
+                                FKUser = user.Id,
+                                Name = interest.Name
+                            };
+                            userModel.Interests.Add(interestModel);
+                        }
+                    }
+
+                    foreach (var approach in approaches)
+                    {
+                        if (approach.FKUser == user.Id)
+                        {
+                            var approachModel = new ApproachModel()
+                            {
+                                FKUser = user.Id,
+                            };
+                            userModel.Approaches.Add(approachModel);
+                        }
+                    }
+
+                    //return Ok(users.ToList());
+                    return Ok(userModel);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // POST: api/Users
         public void Post([FromBody]string value)
         {
         }
-
-        // PUT: api/Users/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
 
         [HttpPut]
         [ResponseType(typeof(User))]
@@ -50,11 +159,15 @@ namespace WhatsNext.Controllers
                 using (var unitOfWork = new UnitOfWork(new WhatsNextEntities()))
                 {
                     User theUser = unitOfWork.Users.Get(user.Id);
+                    IEnumerable<Interest> allInterests = unitOfWork.Interests.GetAll();
                     //theUser.Interests.Clear();
-                    foreach (var interest in user.Interests)
+                    foreach (var interest in allInterests)
                     {
-                        theUser.Interests.Remove(interest);
-                        unitOfWork.SaveChanges();
+                        if (interest.FKUser == user.Id)
+                        {
+                            unitOfWork.Interests.Remove(interest);
+                            unitOfWork.SaveChanges();
+                        }
                     }
 
                     theUser.UserName = user.UserName;
