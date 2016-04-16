@@ -13,32 +13,27 @@
             var genericContent = [
                 {
                     "id": 0,
-                    "imgUrl": "img/unsplash1.jpg",
+                    "imgUrl": "img/band.mp4",
                     "title": {
-                        "left": "mamma mia",
-                        "right": "pizza"
+                        "left": "Cool band",
+                        "right": "playing tonight"
                     },
                     "message1": {
-                        "left": "Welcome to the next generation of",
-                        "right": "smart content serving"
+                        "left": "Be quick, reserve your tickets for this incredible experience",
+                        "right": "today"
                     },
                     "message2": {
-                        "left": "Something",
-                        "right": "cool"
-                    },
-                    "message3": {
-                        "left": "Something",
-                        "right": "cool"
+                        "left": "50% off for first",
+                        "right": "50 reservations"
                     },
                     "message4": {
-                        "left": "Welcome to the next generation of",
-                        "right": "smart content serving"
+                        "left": "For more details, just scan the provided",
+                        "right": "qr code"
                     },
 
                     "duration": 5000,
                     "animation": 0,
-                    "slide": "slideInLeft",
-                    "mediaType": "img"
+                    "mediaType": "video"
                 },
                 {
                     "id": 1,
@@ -65,36 +60,30 @@
                     },
                     "duration": 5000,
                     "animation": 5,
-                    "slide": "slideInLeft",
                     "mediaType": "video"
                 },
                 {
                     "id": 2,
-                    "imgUrl": "img/unsplash3.jpg",
+                    "imgUrl": "img/swro.mp4",
                     "title": {
-                        "left": "No",
-                        "right": "Idea"
+                        "left": "Star Wars",
+                        "right": "fan?"
                     },
                     "message1": {
-                        "left": "This is what's",
-                        "right": "next ext xt t"
+                        "left": "Visit location where they shot",
+                        "right": "Rogue One"
                     },
                     "message2": {
-                        "left": "Welcome",
-                        "right": "master"
-                    },
-                    "message3": {
-                        "left": "I ahve",
-                        "right": "missed you"
+                        "left": "Tour guide provided",
+                        "right": "at the location"
                     },
                     "message4": {
-                        "left": "Don't worry. Next time",
-                        "right": "I will have more precise gun"
+                        "left": "Scan the qr code and we will set the destinations in your",
+                        "right": "google map"
                     },
                     "duration": 5000,
                     "animation": 10,
-                    "slide": "slideInLeft",
-                    "mediaType": "img"
+                    "mediaType": "video"
                 }
             ];
             return genericContent;
@@ -134,7 +123,6 @@
 
                     "duration": 5000,
                     "animation": 0,
-                    "slide": "slideInLeft",
                     "display": "display",
                     "mediaType": "img"
                 },
@@ -167,13 +155,60 @@
                     },
                     "duration": 5000,
                     "animation": 5,
-                    "slide": "slideInLeft",
                     "display": "display",
                     "mediaType": "img"
                 },
+                 {
+                     "id": 5,
+                     "imgUrl": "img/coffee.jpg",
+                     "mainText": {
+                         "left": "Benjamin, your favorite coffee shop is only",
+                         "right": "50 meters ahead"
+                     },
+                     "title": {
+                         "left": "Starbucks",
+                         "right": ""
+                     },
+                     "message1": {
+                         "left": "Benjamin, you should hurry up, they have free cookies",
+                         "right": "till 9 AM"
+                     },
+                     "message2": {
+                         "left": "Plus,",
+                         "right": "10% discount on breakfast"
+                     },
+                     "message4": {
+                         "left": "Your friends were also,",
+                         "right": "here:"
+                     },
+                     "duration": 5000,
+                     "animation": 10,
+                     "display": "display",
+                     "mediaType": "img",
+                     "friends": [
+                         {
+                             "imgUrl": "(img/mark.jpg);"
+                         },
+                         {
+                             "imgUrl": "(img/elon.jpg);"
+                         },
+                         {
+                             "imgUrl": "(img/kevin.jpg);"
+                         },
+                         {
+                             "imgUrl": "(img/bill.jpg);"
+                         },
+                         {
+                             "imgUrl": "(img/celine.jpg);"
+                         },
+                         {
+                             "imgUrl": "(img/BD.jpg);"
+                         }
+                     ]
+                 },
                 {
-                    "id": 5,
-                    "imgUrl": "img/unsplash6.jpg",
+                    "id": 6,
+                    "imgUrl": "img/sunglasses.jpg",
                     "mainText": {
                         "left": "Some of your friends bought beautiful sunglasses",
                         "right": "in Dubrovnik"
@@ -199,10 +234,36 @@
                         "right": "in Dubrovnik"
                     },
                     "duration": 5000,
-                    "animation": 10,
-                    "slide": "slideInLeft",
+                    "animation": 15,
                     "display": "display",
                     "mediaType": "img"
+                },
+                {
+                    "id": 7,
+                    "imgUrl": "img/got.mp4",
+                    "mainText": {
+                        "left": "Since you are a big fan of Game of Thrones",
+                        "right": "they were in Dubrovnik"
+                    },
+                    "title": {
+                        "left": "Benjamin,",
+                        "right": "Game of thrones was filmed here"
+                    },
+                    "message1": {
+                        "left": "Take a look at some of the",
+                        "right": "filming locations"
+                    },
+                    "message2": {
+                        "left": "That is not all,",
+                        "right": "win a great price!"
+                    },
+                    "message4": {
+                        "left": "Hurry up while the weather is still",
+                        "right": "on your side"
+                    },
+                    "duration": 5000,
+                    "animation": 20,
+                    "mediaType": "video"
                 }
             ];
             return personalizedContent;
