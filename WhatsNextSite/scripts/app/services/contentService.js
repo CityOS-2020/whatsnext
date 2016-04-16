@@ -7,6 +7,13 @@
     function contentService(dataService) {
         var entityName = 'content';
 
+        var getUser = function () {
+            var user = {
+                "name": "John",
+                "imgUrl": "img/abdu.jpg"
+            }
+            return user
+        }
 
         var getGenericContent = function () {
             //return dataService.getAll(entityName);
@@ -31,7 +38,7 @@
                         "right": "qr code"
                     },
 
-                    "duration": 5000,
+                    "duration": 10000,
                     "animation": 0,
                     "mediaType": "video"
                 },
@@ -58,8 +65,8 @@
                         "left": "To download the app, just scan the provided",
                         "right": "qr code"
                     },
-                    "duration": 5000,
-                    "animation": 5,
+                    "duration": 10000,
+                    "animation": 10,
                     "mediaType": "video"
                 },
                 {
@@ -81,8 +88,30 @@
                         "left": "Scan the qr code and we will set the destinations in your",
                         "right": "google map"
                     },
-                    "duration": 5000,
-                    "animation": 10,
+                    "duration": 10000,
+                    "animation": 20,
+                    "mediaType": "video"
+                },
+                {
+                    "id": 3,
+                    "imgUrl": "img/stoorm.mp4",
+                    "title": {
+                        "left": "Storm",
+                        "right": "warning !!!"
+                    },
+                    "message1": {
+                        "left": "Please, be advised",
+                        "right": "storm is approaching"
+                    },
+                    "message2": {
+                        "left": "Storms expected till 5:00 PM"
+                    },
+                    "message4": {
+                        "left": "Scan the qr code to see full forecast",
+                        "right": "on your mobile device"
+                    },
+                    "duration": 10000,
+                    "animation": 30,
                     "mediaType": "video"
                 }
             ];
@@ -92,6 +121,7 @@
 
         var getPersonalizedContent = function () {
             //return dataService.getAll(entityName);
+            var userName = getUser().name;
             var personalizedContent = [
                 {
                     "id": 3,
@@ -121,7 +151,7 @@
                         "right": "in Dubrovnik"
                     },
 
-                    "duration": 5000,
+                    "duration": 10000,
                     "animation": 0,
                     "display": "display",
                     "mediaType": "img"
@@ -134,11 +164,11 @@
                         "right": "Lokrum Boat Trip"
                     },
                     "title": {
-                        "left": "boat trip",
-                        "right": "lokrum"
+                        "left": "lokrum",
+                        "right": "boat trip"
                     },
                     "message1": {
-                        "left": "Benjamin, you should hurry up, there are only",
+                        "left": userName + ", you should hurry up, there are only",
                         "right": "25 places left"
                     },
                     "message2": {
@@ -153,8 +183,8 @@
                         "left": "This offer is valid only while you are",
                         "right": "in Dubrovnik"
                     },
-                    "duration": 5000,
-                    "animation": 5,
+                    "duration": 10000,
+                    "animation": 10,
                     "display": "display",
                     "mediaType": "img"
                 },
@@ -162,7 +192,7 @@
                      "id": 5,
                      "imgUrl": "img/coffee.jpg",
                      "mainText": {
-                         "left": "Benjamin, your favorite coffee shop is only",
+                         "left": userName + ", your favorite coffee shop is only",
                          "right": "50 meters ahead"
                      },
                      "title": {
@@ -170,7 +200,7 @@
                          "right": ""
                      },
                      "message1": {
-                         "left": "Benjamin, you should hurry up, they have free cookies",
+                         "left": userName + ", you should hurry up, they have free cookies",
                          "right": "till 9 AM"
                      },
                      "message2": {
@@ -181,29 +211,17 @@
                          "left": "Your friends were also,",
                          "right": "here:"
                      },
-                     "duration": 5000,
-                     "animation": 10,
+                     "duration": 10000,
+                     "animation": 20,
                      "display": "display",
                      "mediaType": "img",
                      "friends": [
-                         {
-                             "imgUrl": "(img/mark.jpg);"
-                         },
-                         {
-                             "imgUrl": "(img/elon.jpg);"
-                         },
-                         {
-                             "imgUrl": "(img/kevin.jpg);"
-                         },
-                         {
-                             "imgUrl": "(img/bill.jpg);"
-                         },
-                         {
-                             "imgUrl": "(img/celine.jpg);"
-                         },
-                         {
-                             "imgUrl": "(img/BD.jpg);"
-                         }
+                        "(img/mark.jpg);",
+                        "(img/elon.jpg);",
+                        "(img/kevin.jpg);",
+                        "(img/bill.jpg);",
+                        "(img/celine.jpg);",
+                        "(img/BD.jpg);"
                      ]
                  },
                 {
@@ -218,7 +236,7 @@
                         "right": "vista"
                     },
                     "message1": {
-                        "left": "Benjamin, the sun is always shining here. Consider buying",
+                        "left": userName + ", the sun is always shining here. Consider buying",
                         "right": "Rayban sunglasses"
                     },
                     "message2": {
@@ -233,8 +251,8 @@
                         "left": "This offer is valid only while you are",
                         "right": "in Dubrovnik"
                     },
-                    "duration": 5000,
-                    "animation": 15,
+                    "duration": 10000,
+                    "animation": 30,
                     "display": "display",
                     "mediaType": "img"
                 },
@@ -246,7 +264,7 @@
                         "right": "they were in Dubrovnik"
                     },
                     "title": {
-                        "left": "Benjamin,",
+                        "left": userName + ",",
                         "right": "Game of thrones was filmed here"
                     },
                     "message1": {
@@ -261,8 +279,8 @@
                         "left": "Hurry up while the weather is still",
                         "right": "on your side"
                     },
-                    "duration": 5000,
-                    "animation": 20,
+                    "duration": 10000,
+                    "animation": 40,
                     "mediaType": "video"
                 }
             ];
@@ -272,7 +290,8 @@
 
         return {
             getGenericContent: getGenericContent,
-            getPersonalizedContent: getPersonalizedContent
+            getPersonalizedContent: getPersonalizedContent,
+            getUser : getUser
         };
     }
 }());

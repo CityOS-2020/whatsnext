@@ -8,10 +8,10 @@
     <div id="message">
         <div class="message-wrapper">
             <div class="outer-wrapper">
-                <div class="image-wrapper"></div>
+                <div class="image-wrapper" style="background-image: url({{user.imgUrl}})"></div>
             </div>
             <div class="text-head">
-                <h1 id="message-h1">Welcome to Dubrovnik <span>Benjamin!</span></h1>
+                <h1 id="message-h1">Welcome to Dubrovnik <span>{{user.name}}!</span></h1>
             </div>
             <div class="banner-small" style="width:800px; overflow:hidden; text-align:center; margin:0 auto; background-color:transparent;">
                 This is the new generation of guidance. See only what you are interesed in and go only where you would like to go. Welcome to the next generation of <span style="color:#e4b254; font-weight: bold">smart content serving</span>.
@@ -21,9 +21,9 @@
 
 
     <div id="bg-main">
-        <div ng-show="currentContent.mediaType == 'img'" style="background-image: url({{currentContent.imgUrl}}); animation-delay: {{currentContent.animation}}s;"> </div>
+        <div ng-show="currentContent.mediaType == 'img'" style="background-image: url({{currentContent.imgUrl}});"> </div>
 
-        <video ng-show="currentContent.mediaType == 'video'" autoplay loop id="bgvid" ng-src="{{currentContent.imgUrl}}" controls>
+        <video ng-show="currentContent.mediaType == 'video'" autoplay id="bgvid" ng-src="{{currentContent.imgUrl}}" controls>
         </video>
         <div class="overlay"></div>
     </div>
@@ -32,7 +32,7 @@
 
     <div id="bg" ng-show="currentContent.display == 'display'">
         <div class="person-container">
-            <div class="image-wrapper-small">
+            <div class="image-wrapper-small" style="background-image: url({{user.imgUrl}})">
             </div>
             <div>{{currentContent.mainText.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.mainText.right}} </span>.</div>
         </div>
@@ -56,7 +56,7 @@
             <div>{{currentContent.message4.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.message4.right}}</span></div>
         </div>
         <div class="friends" style="margin-top:30px; padding-left:10px;" >
-            <div ng-repeat="friend in currentContent.friends" class="image-wrapper-small-friends" style="background-image: url{{friend.imgUrl}}"></div>
+            <div ng-repeat="friend in currentContent.friends" class="image-wrapper-small-friends" style="background-image: url{{friend}}"></div>
         </div>
     </div>
 </body>

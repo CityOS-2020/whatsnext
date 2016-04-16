@@ -7,7 +7,7 @@
         //TODO metodu getPersonalizedContent promijeniti da prima username, ili user id i da stvarno vraca personalized content
         //TODO da bi se to ostvarilo, uvesti kategorije
         //TODO kategorije moraju biti exposed na web api servisu takodjer, da bi ih Abdurrahman mogao gadjati
-
+        $scope.user = contentService.getUser();
         $scope.counter = 0;
         $scope.content = contentService.getGenericContent();
         $scope.currentContent = $scope.content[$scope.counter];
@@ -35,6 +35,7 @@
         $scope.animationsEnabled = true;
 
         $scope.open = function (size) {
+            $scope.content = contentService.getPersonalizedContent();
 
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
@@ -51,7 +52,7 @@
             //callback koji se okida kad se modal zatvori
             modalInstance.result.then(function (selectedItem) {
                 $scope.selected = selectedItem;
-                $scope.content = contentService.getPersonalizedContent();
+                
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });
