@@ -16,7 +16,6 @@
 }
 #bg-main:after {
     content: '';
-    background: transparent url(../images/pattern.png) repeat top left;
 }
 #bg-main div {
     width: 100%;

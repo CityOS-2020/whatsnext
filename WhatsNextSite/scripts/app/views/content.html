@@ -11,7 +11,7 @@
                 <div class="image-wrapper" style="background-image: url({{user.imgUrl}})"></div>
             </div>
             <div class="text-head">
-                <h1 id="message-h1">Welcome to Dubrovnik <span>{{user.name}}!</span></h1>
+                <h1 id="message-h1">Welcome to Dubrovnik <span>{{user.firstName}}!</span></h1>
             </div>
             <div class="banner-small" style="width:800px; overflow:hidden; text-align:center; margin:0 auto; background-color:transparent;">
                 This is the new generation of guidance. See only what you are interesed in and go only where you would like to go. Welcome to the next generation of <span style="color:#e4b254; font-weight: bold">smart content serving</span>.
@@ -27,14 +27,14 @@
         </video>
         <div class="overlay"></div>
     </div>
-    <div ng-show="currentContent.mediaType == 'video'" class="image-wrapper-qr"></div>
+    <div ng-show="currentContent.mediaType == 'video' && currentContent.display != 'display'" class="image-wrapper-qr"></div>
 
 
     <div id="bg" ng-show="currentContent.display == 'display'">
         <div class="person-container">
             <div class="image-wrapper-small" style="background-image: url({{user.imgUrl}})">
             </div>
-            <div>{{currentContent.mainText.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.mainText.right}} </span>.</div>
+            <div><span ng-show="currentContent.display == 'display'">{{user.firstName}}</span>, {{currentContent.mainText.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.mainText.right}} </span>.</div>
         </div>
     </div>
     
@@ -44,7 +44,7 @@
             <h1>{{currentContent.title.left}} <span>{{currentContent.title.right}}</span></h1>
         </div>
         <div class="banner-small" ng-show="currentContent.message1">
-            <div>{{currentContent.message1.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.message1.right}}</span></div>
+            <div><span ng-show="currentContent.display == 'display'">{{user.firstName}}, </span>{{currentContent.message1.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.message1.right}}</span></div>
         </div>
         <div class="banner" ng-show="currentContent.message2">
             <div>{{currentContent.message2.left}} <span style="color:#67c8d8;font-weight: bold">{{currentContent.message2.right}}</span></div>

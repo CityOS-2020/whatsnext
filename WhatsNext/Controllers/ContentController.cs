@@ -37,16 +37,18 @@ namespace WhatsNext.Controllers
                                          message4 = (a.Message4Left != null || a.Message4Right != null) ? new { left = a.Message4Left, right = a.Message4Right } : null,
                                          duration = a.Duration,
                                          animation = a.Animation,
-                                         display = "",
+                                         display = a.Display,
                                          mediaType = a.MediaType,
                                          friends = (a.Friends != null)? a.Friends.Split(';').ToList() : new List<string>(),
                                          interests = (a.Interests != null)? a.Interests.Split(';').ToList() : new List<string>()
                                      };
 
-                    if (content == null)
+                    var x = content.Where(c => c.display == null).ToList();
+
+                    if (x == null)
                         return NotFound();
 
-                    return Ok(content.ToList());
+                    return Ok(x.ToList());
                 }
             }
             catch (System.Exception ex)

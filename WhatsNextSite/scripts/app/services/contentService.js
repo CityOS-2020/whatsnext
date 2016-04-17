@@ -8,12 +8,14 @@
         var entityName = 'content';
 
         var getUser = function () {
+            
             var user = {
                 "id": "0",
-                "name": "John",
+                "firstName": "test",
                 "imgUrl": "img/abdu.jpg",
-                "interestes" : ["tv shows", "food"]
-            }
+                "interestes": ["tv shows", "food"]
+            };
+           
             return user;
         }
 
