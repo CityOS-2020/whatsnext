@@ -55,14 +55,20 @@ namespace WhatsNext.Controllers
                 return BadRequest(ModelState);
             }
 
+            
+
             using (var unitOfWork = new UnitOfWork(new WhatsNextEntities()))
             {
-                unitOfWork.Approaches.Add(approach);
-                unitOfWork.SaveChanges();
+                var approachTableEmpty = unitOfWork.Approaches.GetAll().Count() <= 0;
+
+                if (approachTableEmpty)
+                {
+                    unitOfWork.Approaches.Add(approach);
+                    unitOfWork.SaveChanges();
+                }
             }
 
             return CreatedAtRoute("DefaultApi", new { id = approach.Id }, approach);
-
         }
 
         // PUT: api/Approach/5

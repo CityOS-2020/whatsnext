@@ -28,8 +28,21 @@ namespace WhatsNext.Controllers
                                      select new
                                      {
                                          id = a.Id,
-                                         imgUrl = a.ImgUrl
+                                         imgUrl = a.ImgUrl,
+                                         mainText = new { left = a.MainTextLeft, right = a.MainTextRight},
+                                         title = new { left = a.TitleLeft, right = a.TitleRight},
+                                         message1 = new { left = a.Message1Left, right = a.Message1Right},
+                                         message2 = new { left = a.Message2Left, right = a.Message2Right },
+                                         message3 = new { left = a.Message3Left, right = a.Message3Right },
+                                         message4 = new { left = a.Message4Left, right = a.Message4Right },
+                                         duration = a.Duration,
+                                         animation = a.Animation,
+                                         display = a.Display,
+                                         mediaType = a.MediaType,
+                                         friends = a.Friends.Split(';'),
+                                         interests = a.Friends.Split(';')
                                      };
+
                     if (content == null)
                         return NotFound();
 
@@ -42,9 +55,49 @@ namespace WhatsNext.Controllers
             }
         }
         // GET: api/Content/5
-        public string Get(int id)
+        [EnableCors("http://localhost:25592", "*", "*")]
+        [Route("api/content/{userId}")]
+        public IHttpActionResult Get(long userId)
         {
-            return "value";
+            try
+            {
+                using (var unitOfWork = new UnitOfWork(new WhatsNextEntities()))
+                {
+                    var interests = from i in unitOfWork.Interests.GetAll()
+                        where i.FKUser == userId
+                        select i.Name;
+
+                    var content = from c in unitOfWork.Content.GetAll()
+                                  select new
+                                  {
+                                      id = c.Id,
+                                      imgUrl = c.ImgUrl,
+                                      mainText = new { left = c.MainTextLeft, right = c.MainTextRight },
+                                      title = new { left = c.TitleLeft, right = c.TitleRight },
+                                      message1 = new { left = c.Message1Left, right = c.Message1Right },
+                                      message2 = new { left = c.Message2Left, right = c.Message2Right },
+                                      message3 = new { left = c.Message3Left, right = c.Message3Right },
+                                      message4 = new { left = c.Message4Left, right = c.Message4Right },
+                                      duration = c.Duration,
+                                      animation = c.Animation,
+                                      display = c.Display,
+                                      mediaType = c.MediaType,
+                                      friends = c.Friends.Split(';'),
+                                      interests = c.Interests.Split(';')
+                                  };
+
+                    var x = content.Where(c => c.interests.Intersect(interests).Any()).ToList();
+
+                    if (x == null)
+                        return NotFound();
+
+                    return Ok(x.ToList());
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // POST: api/Content
