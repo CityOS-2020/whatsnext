@@ -10,11 +10,19 @@
             <div class="outer-wrapper">
                 <div class="image-wrapper" style="background-image: url({{user.imgUrl}})"></div>
             </div>
-            <div class="text-head">
+            <div class="text-head" ng-if="user.firstName == 'John'">
                 <h1 id="message-h1">Welcome to Dubrovnik <span>{{user.firstName}}!</span></h1>
             </div>
-            <div class="banner-small" style="width:800px; overflow:hidden; text-align:center; margin:0 auto; background-color:transparent;">
+            <div class="banner-small" style="width:800px; overflow:hidden; text-align:center; margin:0 auto; background-color:transparent;" ng-if="user.firstName == 'John'">
                 This is the new generation of guidance. See only what you are interesed in and go only where you would like to go. Welcome to the next generation of <span style="color:#e4b254; font-weight: bold">smart content serving</span>.
+            </div>
+
+
+            <div class="text-head" ng-if="user.firstName == 'Benjamin'">
+                <h1 id="message-h1">Dobrodošli u Dubrovnik <span>{{user.firstName}}e!</span></h1>
+            </div>
+            <div class="banner-small" style="width:800px; overflow:hidden; text-align:center; margin:0 auto; background-color:transparent;" ng-if="user.firstName == 'Benjamin'">
+                Ovo je nova generacija navođenja. Pogledajte samo sto Vas interesuje i posjetite lokacije koje želite. Dobrodošli u novu generaciju <span style="color:#e4b254; font-weight: bold">pametnog informisanja</span>.
             </div>
         </div>
     </div>
