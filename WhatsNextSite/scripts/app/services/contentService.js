@@ -9,8 +9,10 @@
 
         var getUser = function () {
             var user = {
+                "id": "0",
                 "name": "John",
-                "imgUrl": "img/abdu.jpg"
+                "imgUrl": "img/abdu.jpg",
+                "interestes" : ["tv shows", "food"]
             }
             return user
         }
@@ -40,7 +42,8 @@
 
                     "duration": 10000,
                     "animation": 0,
-                    "mediaType": "video"
+                    "mediaType": "video",
+                    "contentType": "music"
                 },
                 {
                     "id": 1,
@@ -67,7 +70,8 @@
                     },
                     "duration": 10000,
                     "animation": 10,
-                    "mediaType": "video"
+                    "mediaType": "video",
+                    "contentType": "app"
                 },
                 {
                     "id": 2,
@@ -90,7 +94,8 @@
                     },
                     "duration": 10000,
                     "animation": 20,
-                    "mediaType": "video"
+                    "mediaType": "video",
+                    "contentType": "tv shows"
                 },
                 {
                     "id": 3,
@@ -112,7 +117,8 @@
                     },
                     "duration": 10000,
                     "animation": 30,
-                    "mediaType": "video"
+                    "mediaType": "video",
+                    "contentType": "info"
                 }
             ];
             return genericContent;
@@ -150,11 +156,11 @@
                         "left": "This offer is valid in all our pizzerias",
                         "right": "in Dubrovnik"
                     },
-
                     "duration": 10000,
                     "animation": 0,
                     "display": "display",
-                    "mediaType": "img"
+                    "mediaType": "img",
+                    "contentType": "food"
                 },
                 {
                     "id": 4,
@@ -186,7 +192,8 @@
                     "duration": 10000,
                     "animation": 10,
                     "display": "display",
-                    "mediaType": "img"
+                    "mediaType": "img",
+                    "contentType": "location"
                 },
                  {
                      "id": 5,
@@ -222,7 +229,8 @@
                         "(img/bill.jpg);",
                         "(img/celine.jpg);",
                         "(img/BD.jpg);"
-                     ]
+                     ],
+                     "contentType": "food"
                  },
                 {
                     "id": 6,
@@ -254,7 +262,8 @@
                     "duration": 10000,
                     "animation": 30,
                     "display": "display",
-                    "mediaType": "img"
+                    "mediaType": "img",
+                    "contentType": "add"
                 },
                 {
                     "id": 7,
@@ -281,7 +290,8 @@
                     },
                     "duration": 10000,
                     "animation": 40,
-                    "mediaType": "video"
+                    "mediaType": "video",
+                    "contentType": "tv shows"
                 }
             ];
             return personalizedContent;
