@@ -28,5 +28,6 @@ namespace WhatsNext.Entities
         public virtual DbSet<Approach> Approaches { get; set; }
         public virtual DbSet<Interest> Interests { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Content> Contents { get; set; }
     }
 }

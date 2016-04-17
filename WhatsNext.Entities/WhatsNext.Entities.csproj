@@ -54,6 +54,9 @@
     <Compile Include="Approach.cs">
       <DependentUpon>WhatsNext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Content.cs">
+      <DependentUpon>WhatsNext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Interest.cs">
       <DependentUpon>WhatsNext.tt</DependentUpon>
     </Compile>

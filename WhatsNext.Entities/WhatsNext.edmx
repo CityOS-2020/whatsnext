@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WhatsNextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WhatsNextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Approaches">
           <Key>
             <PropertyRef Name="Id" />
@@ -12,6 +12,31 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FKUser" Type="bigint" Nullable="false" />
           <Property Name="EventTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImgUrl" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MainTextLeft" Type="nvarchar" MaxLength="50" />
+          <Property Name="MainTextRight" Type="nvarchar" MaxLength="50" />
+          <Property Name="TitleLeft" Type="nvarchar" MaxLength="50" />
+          <Property Name="TitleRight" Type="nvarchar" MaxLength="50" />
+          <Property Name="Message1Left" Type="nvarchar" MaxLength="50" />
+          <Property Name="Message1Right" Type="nvarchar" MaxLength="50" />
+          <Property Name="Message2Left" Type="nvarchar" MaxLength="50" />
+          <Property Name="Message2Right" Type="nvarchar" MaxLength="50" />
+          <Property Name="Message3Left" Type="nvarchar" MaxLength="50" />
+          <Property Name="Message3Right" Type="nvarchar" MaxLength="50" />
+          <Property Name="Message4Left" Type="nvarchar" MaxLength="50" />
+          <Property Name="Message4Right" Type="nvarchar" MaxLength="50" />
+          <Property Name="Duration" Type="int" />
+          <Property Name="Animation" Type="int" />
+          <Property Name="Display" Type="nvarchar" MaxLength="50" />
+          <Property Name="MediaType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Friends" Type="nvarchar(max)" />
+          <Property Name="Interests" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Interests">
           <Key>
@@ -58,6 +83,7 @@
         </Association>
         <EntityContainer Name="WhatsNextModelStoreContainer">
           <EntitySet Name="Approaches" EntityType="Self.Approaches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Content" EntityType="Self.Content" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Interests" EntityType="Self.Interests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Approaches_Users" Association="Self.FK_Approaches_Users">
@@ -69,8 +95,7 @@
             <End Role="Interests" EntitySet="Interests" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WhatsNextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -141,7 +166,33 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Interests" EntitySet="Interests" />
           </AssociationSet>
+          <EntitySet Name="Contents" EntityType="WhatsNextModel.Content" />
         </EntityContainer>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImgUrl" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MainTextLeft" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MainTextRight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TitleLeft" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TitleRight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message1Left" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message1Right" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message2Left" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message2Right" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message3Left" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message3Right" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message4Left" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message4Right" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Duration" Type="Int32" />
+          <Property Name="Animation" Type="Int32" />
+          <Property Name="Display" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MediaType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Friends" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Interests" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -175,6 +226,32 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="HomeTown" ColumnName="HomeTown" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contents">
+            <EntityTypeMapping TypeName="WhatsNextModel.Content">
+              <MappingFragment StoreEntitySet="Content">
+                <ScalarProperty Name="Interests" ColumnName="Interests" />
+                <ScalarProperty Name="Friends" ColumnName="Friends" />
+                <ScalarProperty Name="MediaType" ColumnName="MediaType" />
+                <ScalarProperty Name="Display" ColumnName="Display" />
+                <ScalarProperty Name="Animation" ColumnName="Animation" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Message4Right" ColumnName="Message4Right" />
+                <ScalarProperty Name="Message4Left" ColumnName="Message4Left" />
+                <ScalarProperty Name="Message3Right" ColumnName="Message3Right" />
+                <ScalarProperty Name="Message3Left" ColumnName="Message3Left" />
+                <ScalarProperty Name="Message2Right" ColumnName="Message2Right" />
+                <ScalarProperty Name="Message2Left" ColumnName="Message2Left" />
+                <ScalarProperty Name="Message1Right" ColumnName="Message1Right" />
+                <ScalarProperty Name="Message1Left" ColumnName="Message1Left" />
+                <ScalarProperty Name="TitleRight" ColumnName="TitleRight" />
+                <ScalarProperty Name="TitleLeft" ColumnName="TitleLeft" />
+                <ScalarProperty Name="MainTextRight" ColumnName="MainTextRight" />
+                <ScalarProperty Name="MainTextLeft" ColumnName="MainTextLeft" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
