@@ -56,7 +56,7 @@ namespace WhatsNext.Controllers
                 return BadRequest(ModelState);
             }
 
-            
+            Approach insertedApproach;
 
             using (var unitOfWork = new UnitOfWork(new WhatsNextEntities()))
             {
@@ -66,10 +66,20 @@ namespace WhatsNext.Controllers
                 {
                     unitOfWork.Approaches.Add(approach);
                     unitOfWork.SaveChanges();
+
+                    insertedApproach = unitOfWork.Approaches.GetAll().First();
                 }
+                else
+                {
+                    insertedApproach = new Approach() { Id = 0, FKUser = approach.FKUser};
+                }
+
+                
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = approach.Id }, approach);
+             
+
+            return CreatedAtRoute("DefaultApi", new { id = insertedApproach.Id }, insertedApproach);
         }
 
         // PUT: api/Approach/5
