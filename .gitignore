@@ -362,3 +362,5 @@ WhatsNext/obj/Release/WhatsNext.pdb
 WhatsNext/Web.config
 WhatsNext/WhatsNext.API.csproj.user
 WhatsNext.Entities/obj/Release/WhatsNext.Entities.csprojResolveAssemblyReference.cache
+WhatsNext.Repository.Core/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache
+WhatsNext.Repository/obj/Release/DesignTimeResolveAssemblyReferencesInput.cache

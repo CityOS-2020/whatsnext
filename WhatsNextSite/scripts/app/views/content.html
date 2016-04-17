@@ -56,7 +56,7 @@
             <div>{{currentContent.message4.left}} <span style="color:#e4b254; font-weight: bold">{{currentContent.message4.right}}</span></div>
         </div>
         <div class="friends" style="margin-top:30px; padding-left:10px;" >
-            <div ng-repeat="friend in currentContent.friends" class="image-wrapper-small-friends" style="background-image: url{{friend}}"></div>
+            <div ng-repeat="friend in currentContent.friends" class="image-wrapper-small-friends" style="background-image: url('{{friend}}')"></div>
         </div>
     </div>
 </body>

@@ -31,16 +31,16 @@ namespace WhatsNext.Controllers
                                          imgUrl = a.ImgUrl,
                                          mainText = new { left = a.MainTextLeft, right = a.MainTextRight},
                                          title = new { left = a.TitleLeft, right = a.TitleRight},
-                                         message1 = new { left = a.Message1Left, right = a.Message1Right},
-                                         message2 = new { left = a.Message2Left, right = a.Message2Right },
-                                         message3 = new { left = a.Message3Left, right = a.Message3Right },
-                                         message4 = new { left = a.Message4Left, right = a.Message4Right },
+                                         message1 = (a.Message1Left != null || a.Message1Right != null) ? new { left = a.Message1Left, right = a.Message1Right } : null,
+                                         message2 = (a.Message2Left != null || a.Message2Right != null) ? new { left = a.Message2Left, right = a.Message2Right } : null,
+                                         message3 = (a.Message3Left != null || a.Message3Right != null) ? new { left = a.Message3Left, right = a.Message3Right } : null,
+                                         message4 = (a.Message4Left != null || a.Message4Right != null) ? new { left = a.Message4Left, right = a.Message4Right } : null,
                                          duration = a.Duration,
                                          animation = a.Animation,
-                                         display = a.Display,
+                                         display = "",
                                          mediaType = a.MediaType,
-                                         friends = a.Friends.Split(';'),
-                                         interests = a.Friends.Split(';')
+                                         friends = (a.Friends != null)? a.Friends.Split(';').ToList() : new List<string>(),
+                                         interests = (a.Interests != null)? a.Interests.Split(';').ToList() : new List<string>()
                                      };
 
                     if (content == null)
@@ -74,16 +74,16 @@ namespace WhatsNext.Controllers
                                       imgUrl = c.ImgUrl,
                                       mainText = new { left = c.MainTextLeft, right = c.MainTextRight },
                                       title = new { left = c.TitleLeft, right = c.TitleRight },
-                                      message1 = new { left = c.Message1Left, right = c.Message1Right },
-                                      message2 = new { left = c.Message2Left, right = c.Message2Right },
-                                      message3 = new { left = c.Message3Left, right = c.Message3Right },
-                                      message4 = new { left = c.Message4Left, right = c.Message4Right },
+                                      message1 = (c.Message1Left != null || c.Message1Right != null) ? new { left = c.Message1Left, right = c.Message1Right } : null,
+                                      message2 = (c.Message2Left != null || c.Message2Right != null) ? new { left = c.Message2Left, right = c.Message2Right } : null,
+                                      message3 = (c.Message3Left != null || c.Message3Right != null) ? new { left = c.Message3Left, right = c.Message3Right } : null,
+                                      message4 = (c.Message4Left != null || c.Message4Right != null) ? new { left = c.Message4Left, right = c.Message4Right } : null,
                                       duration = c.Duration,
                                       animation = c.Animation,
-                                      display = c.Display,
+                                      display = "display",
                                       mediaType = c.MediaType,
-                                      friends = c.Friends.Split(';'),
-                                      interests = c.Interests.Split(';')
+                                      friends = (c.Friends != null) ? c.Friends.Split(';').ToList() : new List<string>(),
+                                      interests = (c.Interests != null) ? c.Interests.Split(';').ToList() : new List<string>()
                                   };
 
                     var x = content.Where(c => c.interests.Intersect(interests).Any()).ToList();

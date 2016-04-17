@@ -9,25 +9,62 @@
         //TODO kategorije moraju biti exposed na web api servisu takodjer, da bi ih Abdurrahman mogao gadjati
         $scope.user = contentService.getUser();
         $scope.counter = 0;
-        $scope.content = contentService.getGenericContent();
-        $scope.currentContent = $scope.content[$scope.counter];
-        $scope.counter++;
-        $scope.contentLength = $scope.content.length;
-        var duration = $scope.currentContent.duration;
+        $scope.content;// = contentService.getGenericContent();
 
-        $scope.approachBeingServiced = sharedService.getApproachBeingServiced();
+        dataService.getAll('content').then(function (data) {
+            $scope.content = data;
 
-        //vrti sadrzaj
-        $interval(function () {
             $scope.currentContent = $scope.content[$scope.counter];
+            $scope.counter++;
+            $scope.contentLength = $scope.content.length;
+            var duration = 10000;//$scope.currentContent.duration;
 
-            duration = $scope.currentContent.duration;
-            if ($scope.counter >= $scope.contentLength - 1) {
-                $scope.counter = 0;
-            } else {
-                $scope.counter++;
-            }
-        }, duration);
+            $scope.approachBeingServiced = sharedService.getApproachBeingServiced();
+
+            //vrti sadrzaj
+            $interval(function () {
+                $scope.currentContent = $scope.content[$scope.counter];
+
+                duration = 10000;//$scope.currentContent.duration;
+                if ($scope.counter >= $scope.contentLength - 1) {
+                    $scope.counter = 0;
+                } else {
+                    $scope.counter++;
+                }
+            }, duration);
+
+
+
+            //radi poling servisa/baze i gleda ima li NOVE approach notifikacije
+            $interval(function () {
+                approachesService.getApproaches().then(function (data) {
+                    //ako ima approach u bazi, ali trenutno opsluzivani nije nasetan, nasetaj taj u bazi da bude trenutno opsluzivani
+                    if (data.length > 0 && typeof $scope.approachBeingServiced.id == 'undefined') {
+                        sharedService.setApproachBeingServiced(data[data.length - 1]);
+                        $scope.approachBeingServiced = data[data.length - 1];
+                        $scope.open('lg');
+                    }
+                        //ili ako ima, ali to nije trenutno opsluzivani
+                        //(trenutni izasao iz range, a novi dosao prije nego se varijabla osvjezila)
+                    else if (data.length > 0 && $scope.approachBeingServiced.id != sharedService.getApproachBeingServiced().id) {
+                        sharedService.setApproachBeingServiced(data[data.length - 1]);
+                        $scope.approachBeingServiced = data[data.length - 1];
+                    }
+                        //ako nema nista u bazi
+                        //clear trenutno opsluzivane
+                    else if (data.length == 0) {
+                        sharedService.setApproachBeingServiced({});
+                        $scope.approachBeingServiced = {};
+                        dataService.getAll('content').then(function(data) {
+                            $scope.content = data;
+                            $scope.contentLength = $scope.content.length;
+                            //$scope.counter = 0;
+                        });
+                        //$scope.content = contentService.getGenericContent();
+                    }
+                });
+            }, 1000);
+        });
 
         //scope.items ce biti proslijedjeno modal controlleru. Ovo ces zamijeniti objektima koje treba prikazivati na modalu
         $scope.items = ['item1', 'item2', 'item3'];
@@ -35,7 +72,13 @@
         $scope.animationsEnabled = true;
 
         $scope.open = function (size) {
-            $scope.content = contentService.getPersonalizedContent();
+            //$scope.content = contentService.getPersonalizedContent();
+
+            contentService.getPersonalizedContent(1).then(function(data) {
+                $scope.content = data;
+                $scope.contentLength = $scope.content.length;
+                $scope.counter = 0;
+            });
 
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
@@ -52,7 +95,7 @@
             //callback koji se okida kad se modal zatvori
             modalInstance.result.then(function (selectedItem) {
                 $scope.selected = selectedItem;
-                
+
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });
@@ -62,29 +105,5 @@
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
 
-        //radi poling servisa/baze i gleda ima li NOVE approach notifikacije
-        $interval(function () {
-            approachesService.getApproaches().then(function (data) {
-                //ako ima approach u bazi, ali trenutno opsluzivani nije nasetan, nasetaj taj u bazi da bude trenutno opsluzivani
-                if (data.length > 0 && typeof $scope.approachBeingServiced.id == 'undefined') {
-                    sharedService.setApproachBeingServiced(data[data.length - 1]);
-                    $scope.approachBeingServiced = data[data.length - 1];
-                    $scope.open('lg');
-                }
-                    //ili ako ima, ali to nije trenutno opsluzivani
-                    //(trenutni izasao iz range, a novi dosao prije nego se varijabla osvjezila)
-                else if (data.length > 0 && $scope.approachBeingServiced.id != sharedService.getApproachBeingServiced().id) {
-                    sharedService.setApproachBeingServiced(data[data.length - 1]);
-                    $scope.approachBeingServiced = data[data.length - 1];
-                }
-                    //ako nema nista u bazi
-                    //clear trenutno opsluzivane
-                else if (data.length == 0) {
-                    sharedService.setApproachBeingServiced({});
-                    $scope.approachBeingServiced = {};
-                    $scope.content = contentService.getGenericContent();
-                }
-            });
-        }, 1000);
     };
 }());
