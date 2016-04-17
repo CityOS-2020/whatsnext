@@ -27,6 +27,7 @@ namespace WhatsNext.Entities
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string HomeTown { get; set; }
+        public string ImgUrl { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Approach> Approaches { get; set; }

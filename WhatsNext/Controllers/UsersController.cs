@@ -42,6 +42,7 @@ namespace WhatsNext.Controllers
                         userModel.MiddleName = user.MiddleName;
                         userModel.HomeTown = user.HomeTown;
                         userModel.UserName = userModel.UserName;
+                        userModel.ImgUrl = user.ImgUrl;
 
                         foreach (var interest in interests)
                         {
@@ -104,6 +105,7 @@ namespace WhatsNext.Controllers
                     userModel.MiddleName = user.MiddleName;
                     userModel.HomeTown = user.HomeTown;
                     userModel.UserName = userModel.UserName;
+                    userModel.ImgUrl = user.ImgUrl;
 
                     foreach (var interest in interests)
                     {

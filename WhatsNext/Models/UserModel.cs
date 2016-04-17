@@ -15,6 +15,7 @@ namespace WhatsNext.Models
         public string HomeTown { get; set; }
         public List<ApproachModel> Approaches { get; set; }
         public List<InterestModel> Interests { get; set; } 
+        public string ImgUrl { get; set; }
 
         public UserModel()
         {

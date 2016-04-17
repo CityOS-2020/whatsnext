@@ -4,13 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="405e315bf73e451fab1e7af28d0568dc" Name="Diagram1">
+      <Diagram DiagramId="c60ef8e7c7724b129f86a7f7f3dbf6d9" Name="Diagram1">
         <EntityTypeShape EntityType="WhatsNextModel.Approach" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WhatsNextModel.Content" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WhatsNextModel.Interest" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WhatsNextModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WhatsNextModel.User" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
         <AssociationConnector Association="WhatsNextModel.FK_Approaches_Users" ManuallyRouted="false" />
         <AssociationConnector Association="WhatsNextModel.FK_Interests_Users" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="WhatsNextModel.Content" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

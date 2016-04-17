@@ -26,7 +26,8 @@ namespace WhatsNext.Controllers
                         {
                             id = a.Id,
                             username = a.User.UserName,
-                            eventTime = a.EventTime
+                            eventTime = a.EventTime,
+                            fkUser = a.FKUser
                         };
                     if (approaches == null)
                         return NotFound();

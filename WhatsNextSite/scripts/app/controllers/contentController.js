@@ -7,7 +7,7 @@
         //TODO metodu getPersonalizedContent promijeniti da prima username, ili user id i da stvarno vraca personalized content
         //TODO da bi se to ostvarilo, uvesti kategorije
         //TODO kategorije moraju biti exposed na web api servisu takodjer, da bi ih Abdurrahman mogao gadjati
-        $scope.user = contentService.getUser();
+        //$scope.user = contentService.getUser();
         $scope.counter = 0;
         $scope.content;// = contentService.getGenericContent();
 
@@ -38,10 +38,14 @@
             //radi poling servisa/baze i gleda ima li NOVE approach notifikacije
             $interval(function () {
                 approachesService.getApproaches().then(function (data) {
+                    
                     //ako ima approach u bazi, ali trenutno opsluzivani nije nasetan, nasetaj taj u bazi da bude trenutno opsluzivani
                     if (data.length > 0 && typeof $scope.approachBeingServiced.id == 'undefined') {
                         sharedService.setApproachBeingServiced(data[data.length - 1]);
                         $scope.approachBeingServiced = data[data.length - 1];
+                        dataService.getEntity("users", $scope.approachBeingServiced.fkUser).then(function (userData) {
+                            $scope.user = userData;
+                        });
                         $scope.open('lg');
                     }
                         //ili ako ima, ali to nije trenutno opsluzivani
@@ -49,6 +53,10 @@
                     else if (data.length > 0 && $scope.approachBeingServiced.id != sharedService.getApproachBeingServiced().id) {
                         sharedService.setApproachBeingServiced(data[data.length - 1]);
                         $scope.approachBeingServiced = data[data.length - 1];
+
+                        dataService.getEntity("users", $scope.approachBeingServiced.fkUser).then(function (userData) {
+                            $scope.user = userData;
+                        });
                     }
                         //ako nema nista u bazi
                         //clear trenutno opsluzivane
