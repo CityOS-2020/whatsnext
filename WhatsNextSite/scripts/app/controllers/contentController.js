@@ -82,7 +82,7 @@
         $scope.open = function (size) {
             //$scope.content = contentService.getPersonalizedContent();
 
-            contentService.getPersonalizedContent(1).then(function(data) {
+            contentService.getPersonalizedContent($scope.approachBeingServiced.fkUser).then(function(data) {
                 $scope.content = data;
                 $scope.contentLength = $scope.content.length;
                 $scope.counter = 0;
