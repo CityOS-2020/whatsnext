@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
+    >
+
+    <com.beardedhen.androidbootstrap.FontAwesomeText
+        android:id="@+id/settingIcon"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        fontawesometext:fa_icon="fa-mobile"
+        android:layout_margin="10dp"
+        android:textSize="28sp"
+        android:gravity="center"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        />
+
+    <TextView
+        android:id="@+id/settingName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Display ads on Phone"
+        android:layout_toRightOf="@+id/settingIcon"
+        android:layout_marginLeft="18dp"
+        android:layout_centerVertical="true"
+        android:textSize="17sp"
+        />
+
+    <CheckBox
+        android:id="@+id/settingCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        />
+</RelativeLayout>

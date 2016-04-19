@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="20dp"
+    android:gravity="center"
+    >
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@android:color/white"
+        card_view:cardCornerRadius="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/cardViewBackground"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:src="@drawable/coffee_bg"
+                android:scaleType="centerCrop"
+                />
+
+            <TextView
+                android:id="@+id/cardTag"
+                android:layout_alignTop="@+id/cardViewBackground"
+                android:layout_alignLeft="@+id/cardViewBackground"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="50dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:background="#DF1F5B"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                />
+
+            <LinearLayout
+                android:id="@+id/cadViewDescriptionHolder"
+                android:layout_below="@id/cardViewBackground"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                >
+                <TextView
+                    android:id="@+id/distance_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:text="2.2 km away"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="5dp"
+                    android:textSize="11sp"
+                    />
+                <TextView
+                    android:id="@+id/card_title"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@android:color/black"
+                    android:text="Dubrownik Mountain Climbing"
+                    android:textSize="19sp"
+                    />
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/card_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#A5A6A7"
+                    android:text="WhatsNext would like to suggest you seeing this location. Since you like climbing it could make your stay exceptional"
+                    android:textSize="13sp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_below="@+id/cadViewDescriptionHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="0.9"
+                >
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:background="#DF1F5B"
+                    android:layout_weight="0.3"
+                    android:textColor="@android:color/white"
+                    android:text="Share"
+                    />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.3"
+                    android:background="#6AC9D7"
+                    android:textColor="@android:color/white"
+                    android:text="Directions"
+                    />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black"
+                    android:layout_weight="0.001"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.3"
+                    android:background="#6AC9D7"
+                    android:textColor="@android:color/white"
+                    android:text="Details"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

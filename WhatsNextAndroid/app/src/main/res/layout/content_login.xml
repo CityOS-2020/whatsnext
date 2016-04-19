@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.whatsnext.whatsnext.LoginActivity"
+    tools:showIn="@layout/activity_login">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/loginbg"
+        android:scaleType="centerCrop"
+        android:alpha="0.4"
+        />
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/logo"
+        android:scaleType="centerInside"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        />
+
+    <ProgressBar
+        android:layout_below="@+id/logoImageView"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/progressBarr"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        />
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            >
+            <TextView
+                android:layout_below="@+id/logoImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="what's"
+                android:textColor="#bcbcbc"
+                android:textSize="40sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="next"
+                android:layout_marginLeft="10dp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This is the new generation of guidance. See only \n what you are interested in and go only where \n you would like to go"
+            android:gravity="center"
+            android:textColor="#bcbcbc"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/loginFacebookButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_above="@+id/signUpButtonsLayout"
+        android:layout_marginBottom="5dp"
+        android:text="LOGIN VIA FACEBOOK"
+        android:textColor="#ffffff"
+        android:background="#365999"
+        android:onClick="loginWithFacebook"
+        />
+
+    <LinearLayout
+        android:id="@+id/signUpButtonsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        android:weightSum="1.0"
+        >
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="0.49"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:background="#67c8d8"
+            android:text="SIGN UP"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="0.03"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.49"
+            android:textColor="#ffffff"
+            android:background="#e41859"
+            android:text="LOGIN"
+            android:onClick="loginWithEmail"
+            />
+    </LinearLayout>
+
+</RelativeLayout>
